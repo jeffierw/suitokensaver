@@ -1,7 +1,0 @@
-{
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "suitokensaver",
-  "compatibility_date": "2026-05-03",
-  "pages_build_output_dir": "./dist",
-  "services": [{ "binding": "SNAPSHOT_API", "service": "suitokensaver-snapshots" }]
-}
