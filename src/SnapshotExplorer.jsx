@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronDown, ChevronUp, Copy, Check, RefreshCw } from 'lucide-react';
 import { CAMPAIGNS, UNKNOWN_WAL } from '../shared/campaigns.mjs';
 import { formatAmount } from '../shared/validation.mjs';
-import { quoteValue } from '../snapshots/prices.mjs';
+import { quoteValue as strictQuoteValue, QUOTE_MAX_AGE } from '../snapshots/prices.mjs';
 import { useI18n } from './i18n.jsx';
 
 const campaigns = [...CAMPAIGNS, UNKNOWN_WAL];
 const symbols = ['WAL', 'DEEP', 'NS'];
 const decimals = { WAL: 9, DEEP: 6, NS: 6 };
+const quoteValue = (amount, decimals, quote, now) => strictQuoteValue(amount, decimals, quote, now, true);
 const short = (value) => `${value.slice(0, 10)}...${value.slice(-8)}`;
 const money = (value) => value == null ? '--' : `$${formatAmount(value, 2)}`;
 async function read(route, params, signal) {
@@ -42,7 +43,7 @@ function useSnapshot() {
   useEffect(() => {
     const refresh = () => setState((current) => ({ ...current, revision: current.revision + 1 }));
     const visibility = () => { if (!document.hidden) refresh(); };
-    const interval = setInterval(refresh, 5 * 60 * 1000);
+    const interval = setInterval(refresh, 60 * 1000);
     document.addEventListener('visibilitychange', visibility);
     return () => { clearInterval(interval); document.removeEventListener('visibilitychange', visibility); };
   }, []);
@@ -72,6 +73,7 @@ function Overview() {
       <p className="snapshot-timestamp">{t('Updated daily after 02:00 UTC. Completed: {time}', { time: time(manifest.completedAt) })}</p>
       <p className="snapshot-timestamp">{quotes?.quotes?.[selection.token] ? t('Price: {time} / {source}', { time: time(quotes.quotes[selection.token].updatedAt), source: quotes.quotes[selection.token].source }) : t('Price unavailable')}</p>
       <Controls selection={selection} update={update} />
+      {symbols.some((symbol) => quotes?.quotes?.[symbol] && Date.now() - quotes.quotes[symbol].updatedAt > QUOTE_MAX_AGE) && <p className="warning">{t('Estimates include expired prices. Check price timestamps before use.')}</p>}
       {quotes?.quotes?.[selection.token]?.reference && <p className="quote-note">{t('USDC reference; assumes 1 USDC = 1 USD. Not expected sale proceeds.')}</p>}
       <a className="browse-link" href="#airdrop-addresses">{t('Browse addresses')} <ArrowUpRight size={14} /></a>
     </>}

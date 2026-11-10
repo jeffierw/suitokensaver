@@ -31,8 +31,8 @@ export function parseDefiLlamaQuotes(data, now = Date.now()) {
       ? { price, scale: 8, updatedAt, source: 'DefiLlama', id } : null];
   }));
 }
-export function quoteValue(amount, decimals, quote, now = Date.now()) {
-  if (!quote || now - quote.updatedAt > QUOTE_MAX_AGE || quote.updatedAt > now + 60000) return null;
+export function quoteValue(amount, decimals, quote, now = Date.now(), allowStale = false) {
+  if (!quote || (!allowStale && now - quote.updatedAt > QUOTE_MAX_AGE) || quote.updatedAt > now + 60000) return null;
   return (BigInt(amount) * BigInt(quote.price) * 100n / (10n ** BigInt(decimals + quote.scale))).toString();
 }
 function positiveInteger(value) {
@@ -74,8 +74,9 @@ export async function fetchQuotes(fetchImpl = fetch, now = Date.now()) {
     const response = await fetchImpl(`https://coins.llama.fi/prices/current/${ids}`, { signal: AbortSignal.timeout(15000) });
     if (response.ok) quotes = parseDefiLlamaQuotes(await response.json(), now);
   } catch {}
-  await Promise.all(Object.keys(quotes).filter((token) => !quotes[token]).map(async (token) => {
-    quotes[token] = await fetchCetusQuote(token, fetchImpl, now);
+  await Promise.all(Object.keys(quotes).filter((token) => !quotes[token] || now - quotes[token].updatedAt > 5 * 60000).map(async (token) => {
+    try { quotes[token] = await fetchCetusQuote(token, fetchImpl, now) || quotes[token]; }
+    catch {}
   }));
   return { id: crypto.randomUUID(), fetchedAt: new Date(now).toISOString(), quotes };
 }
