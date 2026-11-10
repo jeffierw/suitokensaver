@@ -18,7 +18,7 @@ export default {
   async scheduled(event, env, context) {
     context.waitUntil((async () => {
       const store = new D1SnapshotStore(env.SNAPSHOTS_DB);
-      await store.putQuote(await fetchQuotes(env));
+      await store.putQuote(await fetchQuotes());
       await store.cleanup();
     })());
   },
