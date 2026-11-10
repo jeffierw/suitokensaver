@@ -12,6 +12,7 @@
     "check:live": "node scripts/check-live.mjs",
     "snapshot:collect": "node --env-file-if-exists=.env scripts/collect-snapshot.mjs",
     "snapshot:prices": "node --env-file-if-exists=.env scripts/refresh-snapshot-prices.mjs",
+    "snapshot:upload": "node scripts/upload-snapshot.mjs",
     "cf:build": "wrangler deploy --dry-run --outdir .wrangler/build",
     "cf:dev": "wrangler dev --test-scheduled",
     "test:cloudflare": "npm run cf:build && node --test tests/cloudflare/*.test.mjs"

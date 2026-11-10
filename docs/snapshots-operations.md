@@ -1,128 +1,71 @@
 # Snapshot Operations
 
-## Current Status
+## Architecture
 
-Local collection and browsing work. Cloudflare configuration passes a dry build
-and a Miniflare D1 pipeline test. No D1 database, Worker deployment or successful
-scheduled production run has been verified.
+- Pages serves the UI and proxies same-origin `/api` requests to the Worker.
+- Personal scans always use live Sui GraphQL; snapshots never decide eligibility.
+- GitHub Actions runs fixed-checkpoint collection and local SQLite aggregation.
+- D1 stores only packed 25-address pages and 1,024 evidence shards.
+- No R2, Queue, Durable Object or paid-plan upgrade is required.
+- Historical token amounts are not a guarantee of successful redemption.
 
-Personal `/api/scan` queries always use live Sui Mainnet GraphQL. Only
-`/api/snapshots/*` uses the global snapshot store. Neither path signs transactions.
+## Schedule
 
-## Local Operation
+`.github/workflows/daily-snapshot.yml` targets 02:00 UTC / 10:00 Asia/Shanghai.
+GitHub may delay scheduled jobs. The measured local full scan took 17 minutes;
+publication occurs after collection and upload, not exactly at 10:00.
+Jobs time out after 40 minutes, do not overlap, and upload no Actions artifacts.
+The UI shows checkpoint and completion timestamps; after 26 hours it flags overdue.
+Prices refresh independently every ten minutes and expire after twenty minutes.
 
-Use Node 22+ from the project directory:
+## Publication
 
-```sh
-npm ci
-npm run snapshot:collect
-npm run snapshot:prices
-npm run dev
-```
+`npm run snapshot:collect` builds ignored `.snapshots` locally.
+`npm run snapshot:upload` requires `SNAPSHOT_IMPORT_URL` (HTTPS Worker origin) and
+`SNAPSHOT_IMPORT_TOKEN`. Store the same generated token in a Worker secret and
+a GitHub repository Actions secret. Never commit or expose it in frontend code.
 
-`SNAPSHOT_DIR` defaults to `.snapshots`. Keep this directory private to the server;
-it contains SQLite state, manifests, quotes and address pages. A failed run never
-updates `latest.json`. Resume an interrupted collecting run with
-`npm run snapshot:collect -- --resume`, within its original 40-minute deadline.
-After that deadline, start a new run without `--resume`.
+Authenticated imports reserve at most one new run per UTC day. Repeated begin,
+upload and publication calls for the same run are idempotent. Conflicting retries
+are rejected. Only a complete manifest with zero unresolved records is accepted.
+All declared page keys and evidence shards must arrive before the latest pointer
+changes atomically. A failed scan/upload leaves the last published snapshot intact.
+An interrupted Actions job cannot resume its lost runner files: retry collection
+on the next UTC day if that day's import budget has already been reserved.
 
-The local commands are manual, not scheduled. Local files are retained until an
-operator archives/removes them; Cloudflare coordinator retention does not clean
-the local directory. Back up the latest manifest, its pages and `state.sqlite`
-together if historical evidence must remain usable.
+The latest published run and active staging run are retained. Cleanup removes
+retired packed artifacts in bounded batches; open old pages may require refresh.
+Legacy partial `snapshot_records` from the failed DO architecture are not read or
+deleted during this migration. Migration v2 retires the old DO class and its alarms.
 
-## Data Meaning
+## Free-Tier Bounds
 
-- Each global scan pins every chain read to one checkpoint. Expired-checkpoint
-  errors fail the job; they do not switch the run to newer chain state.
-- Only supported allowlisted distributions are counted, not all Sui airdrops.
-- Amounts use integer base units and BigInt aggregation. Holders are deduplicated
-  across tokens for the global count, and within each category for its count.
-- Unresolved evidence is excluded and explicitly marks the manifest incomplete;
-  its verified subtotal is not presented as a complete total. Failed traversal
-  or publication retains the prior successful manifest.
-- WAL round labels use creation history; unknown rounds remain in the WAL total.
-- Administrator recovery availability is a warning, not automatic expiration.
-  Existing funds do not guarantee successful redemption; no claim is simulated.
-- Quotes use CoinGecko token IDs defined in `snapshots/prices.mjs`. Quotes older than twenty
-  minutes or missing quotes produce unavailable USD estimates, not zero values.
+D1 Free currently allows 100,000 written rows/day, 5 million read rows/day and
+500 MB per database (5 GB per account). Index and trigger writes also count.
+Each snapshot is capped at 12,000 artifacts, 180 MiB total, 512 KiB per artifact.
+The normal population is expected to be approximately 6,400 artifacts, not
+66,000 per-allocation writes. Monitor measured D1 usage rather than treating this
+as an unlimited-service guarantee. Quota exhaustion can stop updates or reads.
 
-## Measured Mainnet Run
+Private-repository GitHub Actions minutes share the account's allowance; monitor
+account usage and keep paid overage disabled. A daily 17-25 minute job consumes
+roughly 510-750 minutes in a 30-day month, excluding other workflows/repositories.
+No workflow changes billing settings.
 
-Collected November 10, 2026, 10:06:58-10:23:50 Asia/Shanghai, approximately
-17 minutes. These are historical checkpoint figures, not current balances.
-
-| Field | Value |
-| --- | --- |
-| Snapshot | `e60585a5-ce3d-40ed-84b4-2520261df149` |
-| Checkpoint | `343560690` |
-| Chain time | `2026-11-10T02:06:57.967Z` |
-| Distinct holders | 65,415 |
-| Allocations | 66,598 |
-| Unresolved | 0 |
-| WAL | 5,825,550 |
-| DEEP | 377,036,319.943587 |
-| NS | 2,097,361 |
-
-The local snapshot directory measured approximately 197 MB. This is not a
-production storage-cost estimate. D1 write/read usage and Cloudflare runtime
-limits have not been measured with a full production population.
-
-## Cloudflare Deployment Gate
-
-Obtain account selection, billing approval and deployment authorization first.
-Create the D1 database named `suitokensaver-snapshots`, replace the placeholder
-`database_id` in `wrangler.jsonc`, and apply `cloudflare/migrations/0001_snapshot_store.sql`.
-Wrangler creates the SQLite Durable Object through its declared migration. Configure
-provider credentials as Worker secrets, never frontend variables. Optional quote
-authentication is `COINGECKO_API_KEY`.
-
-Before publishing, run:
+## Deployment
 
 ```sh
 npm test
 npm run test:cloudflare
 npm run test:browser
 npm run build
+npx wrangler d1 migrations apply suitokensaver-snapshots --remote
+npx wrangler deploy
+npx wrangler pages deploy dist --project-name suitokensaver --branch main
+gh workflow run daily-snapshot.yml --repo jeffierw/suitokensaver
 ```
 
-After authorized deployment, set the Node server's `SNAPSHOT_API_URL` to the
-Worker origin and restart the server. The Worker exposes only snapshot reads;
-it does not host the frontend or personal scanner. Same-origin Node proxying
-avoids needing a public CORS policy. Never expose coordinator start/step routes.
-
-Cron uses UTC: chain collection `0 2 * * *` (10:00 Asia/Shanghai), quotes every
-ten minutes. A run has a 40-minute hard deadline; overlapping schedules reuse an
-active run. Jobs are idempotent, with one bounded Durable Object alarm step at a
-time for recovery.
-
-Validate the first full cloud run before launch: deadline, latest manifest,
-all scope pages, evidence, quote freshness, dead-letter queue, request budget
-and storage costs. Miniflare tests are not evidence of production throughput.
-
-## Retention And Failures
-
-The coordinator prunes SQLite jobs, allocations and holder aggregates to the
-latest published run plus the active run. D1 prunes old public pages and evidence
-only after a new manifest becomes latest. A failed or incomplete run cannot replace
-the old public data.
-
-D1 free limits must be monitored: the observed full run has 66,598 allocations,
-so a daily rebuild is close to the 100,000 daily-row write allowance before record
-and page metadata. If account metrics show a limit breach, disable the schedule and
-retain the existing completed snapshot.
-
-Monitor Worker logs, D1 rows read/written, D1 database size and latest checkpoint
-age. A snapshot older than seven hours is labeled overdue in the UI. Prices expire
-independently. Storage failures never become fake zero totals and do not disable
-personal live scanning.
-
-## Verification Coverage
-
-Unit tests cover checkpoint-bound reads, evidence validation, exact aggregation,
-duplicate records, cursor cycles, bounded job dispatch, retention and query
-validation. Miniflare covers publication of multiple pages, overlap, stale jobs,
-old evidence retirement and preserving the latest success after provider failure.
-Browser tests cover categories, pagination, mobile overflow, absent snapshots
-and independent live verification. Production crash/retry exhaustion, checkpoint
-eviction and full cloud throughput remain deployment checks, not verified claims.
+Verify the actual workflow completes, then check `/api/snapshots/latest`, each
+token category, evidence, prices, and a same-origin browser personal query.
+Storage errors must remain errors, never zero balances. Do not activate paid
+resources to recover quota errors; keep old data with honest timestamps.

@@ -38,7 +38,7 @@ A live failure must be investigated, not replaced with a mock balance.
 - Unclaimed is an on-chain object check, not transaction simulation or a redemption guarantee.
 - Personal scans read live state sequentially, not an atomic snapshot. Recheck before using a claim portal.
 - Recovery-cap eligibility is not automatic expiry; remaining funding must be checked.
-- Personal results stay in browser memory unless explicitly exported. Global snapshots separately persist public chain records in D1 and coordinator SQLite.
+- Personal results stay in browser memory unless explicitly exported. Global snapshots separately persist packed public chain records in D1.
 - This local server binds to loopback. Internet deployment needs a reverse proxy,
   shared rate limits, a production data-provider budget, and a privacy/log-retention policy.
 
@@ -57,11 +57,11 @@ npm run snapshot:prices
 npm run test:cloudflare
 ```
 
-Local snapshots live in ignored `.snapshots/`. Cloudflare configuration schedules
-chain collection daily at 02:00 UTC and prices every ten minutes, using D1 and
-a SQLite Durable Object alarm. **Cloud deployment has not been performed.**
-See [operations and deployment gate](docs/snapshots-operations.md) for setup,
-retention, verification results and remaining production checks.
+Local snapshots live in ignored `.snapshots/`. GitHub Actions collects daily at
+02:00 UTC (10:00 China Standard Time), then publishes packed pages and evidence
+to D1. Cloudflare refreshes prices every ten minutes. No R2, Queue or Durable
+Object is used. Free quotas still apply; Actions schedules can be delayed.
+See [operations](docs/snapshots-operations.md) for deployment and failure handling.
 
 ## Design files
 

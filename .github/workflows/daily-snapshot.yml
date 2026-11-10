@@ -1,0 +1,27 @@
+name: Daily chain snapshot
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: daily-snapshot
+  cancel-in-progress: false
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      SNAPSHOT_IMPORT_URL: https://suitokensaver-snapshots.jeffier2015.workers.dev
+      SNAPSHOT_IMPORT_TOKEN: ${{ secrets.SNAPSHOT_IMPORT_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm run snapshot:collect
+      - run: npm run snapshot:upload
+      - if: always()
+        run: rm -rf .snapshots
