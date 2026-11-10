@@ -7,7 +7,7 @@ test('durable pipeline publishes once, rejects stale jobs, and preserves last su
   const mf = new Miniflare({
     modules: true, scriptPath: '.wrangler/build/worker.js', compatibilityDate: '2026-05-03',
     durableObjects: { COORDINATOR: { className: 'SnapshotCoordinator', useSQLite: true } },
-    r2Buckets: ['SNAPSHOTS'], queueProducers: { SCAN_JOBS: 'snapshot-jobs' },
+    d1Databases: { SNAPSHOTS_DB: 'snapshot-test' },
     bindings: { SUI_GRAPHQL_URL: 'https://test-rpc.local' },
     outboundService: async (request) => {
       if (fail) return new Response('unavailable', { status: 503 });
@@ -45,10 +45,10 @@ test('durable pipeline publishes once, rejects stale jobs, and preserves last su
     assert.equal(latest.id, started.id);
     assert.equal(latest.holders, 30);
     assert.equal(latest.scopes['NS/all/claimable'].amount, '3690000000');
-    const bucket = await mf.getR2Bucket('SNAPSHOTS');
-    const publishedPage = await (await bucket.get(`snapshots/${started.id}/NS/all/claimable/1.json`)).json();
+    const page = await (await mf.dispatchFetch(`http://local/api/snapshots/page?id=${started.id}&token=${'N' + 'S'}`)).json();
+    const publishedPage = page;
     assert.equal(publishedPage.rows[0].amount, '123000000');
-    assert.equal((await (await bucket.get(`snapshots/${started.id}/NS/all/claimable/2.json`)).json()).rows.length, 5);
+    assert.equal((await (await mf.dispatchFetch(`http://local/api/snapshots/page?id=${started.id}&token=${'N' + 'S'}&page=2`)).json()).rows.length, 5);
     assert.equal((await call('step', { runId: started.id, jobId: firstJob.id })).status, 200);
     const replacement = await (await call('start')).json();
     for (let turn = 0; turn < 100; turn++) {

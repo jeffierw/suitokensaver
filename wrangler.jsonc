@@ -8,22 +8,12 @@
     "SUI_GRAPHQL_URL": "https://graphql.mainnet.sui.io/graphql"
   },
   "triggers": {
-    "crons": ["0 */6 * * *", "*/10 * * * *"]
+    "crons": ["0 2 * * *", "*/10 * * * *"]
   },
   "durable_objects": {
     "bindings": [{ "name": "COORDINATOR", "class_name": "SnapshotCoordinator" }]
   },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["SnapshotCoordinator"] }],
-  "r2_buckets": [{ "binding": "SNAPSHOTS", "bucket_name": "suitokensaver-snapshots" }],
-  "queues": {
-    "producers": [{ "binding": "SCAN_JOBS", "queue": "suitokensaver-scan-jobs" }],
-    "consumers": [{
-      "queue": "suitokensaver-scan-jobs",
-      "max_batch_size": 1,
-      "max_concurrency": 2,
-      "max_retries": 3,
-      "dead_letter_queue": "suitokensaver-scan-dead"
-    }]
-  },
+  "d1_databases": [{ "binding": "SNAPSHOTS_DB", "database_name": "suitokensaver-snapshots", "database_id": "00000000-0000-0000-0000-000000000000", "migrations_dir": "cloudflare/migrations" }],
   "observability": { "enabled": true }
 }

@@ -10,3 +10,4 @@ playwright-report/
 .snapshots/
 .wrangler/
 .dev.vars*
+.superpowers/

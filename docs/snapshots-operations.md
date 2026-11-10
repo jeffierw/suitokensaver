@@ -3,8 +3,8 @@
 ## Current Status
 
 Local collection and browsing work. Cloudflare configuration passes a dry build
-and a Miniflare pipeline test. No Cloudflare account, resources, deployment or
-successful scheduled production run has been verified.
+and a Miniflare D1 pipeline test. No D1 database, Worker deployment or successful
+scheduled production run has been verified.
 
 Personal `/api/scan` queries always use live Sui Mainnet GraphQL. Only
 `/api/snapshots/*` uses the global snapshot store. Neither path signs transactions.
@@ -65,17 +65,17 @@ Collected November 10, 2026, 10:06:58-10:23:50 Asia/Shanghai, approximately
 | NS | 2,097,361 |
 
 The local snapshot directory measured approximately 197 MB. This is not a
-production storage-cost estimate. Queue overhead and Cloudflare runtime limits
-have not been measured with a full production population.
+production storage-cost estimate. D1 write/read usage and Cloudflare runtime
+limits have not been measured with a full production population.
 
 ## Cloudflare Deployment Gate
 
 Obtain account selection, billing approval and deployment authorization first.
-Then provision the exact resources in `wrangler.jsonc`: R2 bucket
-`suitokensaver-snapshots`, Queues `suitokensaver-scan-jobs` and
-`suitokensaver-scan-dead`. Wrangler creates the SQLite Durable Object through its
-declared migration. Configure provider credentials as Worker secrets, never
-frontend variables. Optional quote authentication is `COINGECKO_API_KEY`.
+Create the D1 database named `suitokensaver-snapshots`, replace the placeholder
+`database_id` in `wrangler.jsonc`, and apply `cloudflare/migrations/0001_snapshot_store.sql`.
+Wrangler creates the SQLite Durable Object through its declared migration. Configure
+provider credentials as Worker secrets, never frontend variables. Optional quote
+authentication is `COINGECKO_API_KEY`.
 
 Before publishing, run:
 
@@ -91,10 +91,10 @@ Worker origin and restart the server. The Worker exposes only snapshot reads;
 it does not host the frontend or personal scanner. Same-origin Node proxying
 avoids needing a public CORS policy. Never expose coordinator start/step routes.
 
-Cron uses UTC: chain collection `0 */6 * * *` (02:00, 08:00, 14:00, 20:00
-Asia/Shanghai), quotes every ten minutes. A run has a 40-minute hard deadline;
-overlapping schedules reuse an active run. Jobs are idempotent, with bounded
-dispatch and a durable alarm for retry recovery.
+Cron uses UTC: chain collection `0 2 * * *` (10:00 Asia/Shanghai), quotes every
+ten minutes. A run has a 40-minute hard deadline; overlapping schedules reuse an
+active run. Jobs are idempotent, with one bounded Durable Object alarm step at a
+time for recovery.
 
 Validate the first full cloud run before launch: deadline, latest manifest,
 all scope pages, evidence, quote freshness, dead-letter queue, request budget
@@ -103,20 +103,19 @@ and storage costs. Miniflare tests are not evidence of production throughput.
 ## Retention And Failures
 
 The coordinator prunes SQLite jobs, allocations and holder aggregates to the
-latest published run plus the active run. Retired evidence markers are removed;
-old R2 pages remain readable but their expanded SQLite evidence returns an
-explicit unavailable response. Temporary cleanup markers expire after one day.
+latest published run plus the active run. D1 prunes old public pages and evidence
+only after a new manifest becomes latest. A failed or incomplete run cannot replace
+the old public data.
 
-R2 immutable snapshot pages and archived quotes are not automatically deleted.
-Before production, choose and configure bucket lifecycle rules for `snapshots/`
-and `quotes/`, allowing time for pinned-page browsing. Do not expire the latest
-successful snapshot during a prolonged provider outage; monitor freshness and
-retain/export that snapshot before any manual cleanup.
+D1 free limits must be monitored: the observed full run has 66,598 allocations,
+so a daily rebuild is close to the 100,000 daily-row write allowance before record
+and page metadata. If account metrics show a limit breach, disable the schedule and
+retain the existing completed snapshot.
 
-Monitor Worker logs, queue backlog/dead letters, R2 growth and latest checkpoint
-age. A snapshot older than seven hours is labeled overdue in the UI. Prices
-expire independently. Storage failures never become fake zero totals and do not
-disable personal live scanning.
+Monitor Worker logs, D1 rows read/written, D1 database size and latest checkpoint
+age. A snapshot older than seven hours is labeled overdue in the UI. Prices expire
+independently. Storage failures never become fake zero totals and do not disable
+personal live scanning.
 
 ## Verification Coverage
 
