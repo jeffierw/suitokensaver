@@ -1,4 +1,5 @@
 const rows = [
+  ['Estimates include expired prices. Check price timestamps before use.', '估值包含过期报价，使用前请检查价格更新时间。', '估值包含過期報價，使用前請檢查價格更新時間。', '推定額には期限切れの価格が含まれます。更新時刻をご確認ください。', '추정액에 오래된 가격이 포함됩니다. 가격 갱신 시간을 확인하세요.', 'Les estimations incluent des prix périmés. Vérifiez leur date.', 'Оцінки містять застарілі ціни. Перевірте час оновлення.'],
   ['Language', '语言', '語言', '言語', '언어', 'Langue', 'Мова'],
   ['Sui Mainnet', 'Sui 主网', 'Sui 主網', 'Sui メインネット', 'Sui 메인넷', 'Réseau principal Sui', 'Основна мережа Sui'],
   ['READ-ONLY SCANNER', '只读扫描器', '唯讀掃描器', '読み取り専用スキャナー', '읽기 전용 스캐너', 'ANALYSE EN LECTURE SEULE', 'СКАНЕР ЛИШЕ ДЛЯ ЧИТАННЯ'],
@@ -39,6 +40,7 @@ const rows = [
   ['No matching allocations were found for this filter. This does not establish past eligibility.', '当前筛选下未找到匹配的分配。这不代表过去没有资格。', '目前篩選下未找到相符的分配。這不代表過去沒有資格。', 'この条件に一致する割当はありません。過去の資格を否定するものではありません。', '이 필터에 일치하는 할당이 없습니다. 과거 자격 여부를 의미하지는 않습니다.', 'Aucune allocation pour ce filtre. Cela ne détermine pas votre éligibilité passée.', 'За цим фільтром розподілів не знайдено. Це не визначає минуле право на отримання.'],
   ['On-chain evidence is not a guarantee of redemption. Claimed amounts are historical, not wallet balances.', '链上证据不保证可成功领取。已领取金额是历史记录，不是钱包余额。', '鏈上證據不保證可成功領取。已領取金額是歷史紀錄，不是錢包餘額。', 'オンチェーン証拠は請求成功を保証しません。請求済み金額は履歴であり残高ではありません。', '온체인 증거는 수령 성공을 보장하지 않습니다. 수령 금액은 기록이며 지갑 잔액이 아닙니다.', 'Les preuves on-chain ne garantissent pas le retrait. Les montants réclamés sont historiques, pas des soldes.', 'Дані мережі не гарантують отримання. Отримані суми є історією, а не балансом гаманця.'],
   ['How to claim', '如何领取', '如何領取', '受け取り方法', '수령 방법', 'Comment réclamer', 'Як отримати'],
+  ['DEEP claim-site prompt', 'DEEP 领取网站提示词', 'DEEP 領取網站提示詞', 'DEEP 請求サイト用プロンプト', 'DEEP 수령 사이트 프롬프트', 'Prompt pour le site de retrait DEEP', 'Запит для сайту отримання DEEP'],
   ['Open official claim portal', '打开官方领取页面', '開啟官方領取頁面', '公式請求ページを開く', '공식 수령 페이지 열기', 'Ouvrir le portail officiel', 'Відкрити офіційний портал'],
   ['Copy DEEP claim prompt', '复制 DEEP 领取提示词', '複製 DEEP 領取提示詞', 'DEEP 請求プロンプトをコピー', 'DEEP 수령 프롬프트 복사', 'Copier le prompt DEEP', 'Копіювати запит для DEEP'],
   ['Open the official portal and connect the wallet holding this allocation. Recheck eligibility before signing.', '打开官方页面并连接持有该分配的钱包。签名前重新确认领取资格。', '開啟官方頁面並連接持有該分配的錢包。簽名前重新確認領取資格。', '公式ページで割当を保有するウォレットを接続し、署名前に資格を再確認してください。', '공식 페이지에서 할당을 보유한 지갑을 연결하고 서명 전에 자격을 다시 확인하세요.', 'Connectez le portefeuille détenteur au portail officiel. Revérifiez votre éligibilité avant de signer.', 'Підключіть гаманець власника до офіційного порталу. Перевірте право на отримання перед підписом.'],

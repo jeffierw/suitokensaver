@@ -49,6 +49,9 @@ function EvidenceLink({ label, value, kind = 'object' }) {
 function ResultRow({ result, item, campaign, group }) {
   const { time, t, locale, errorText } = useI18n();
   const action = claimAction(item, campaign);
+  const deepPrompt = action?.kind === 'agent'
+    ? deepClaimPrompt(result, item, campaign, LOCALES.find(([code]) => code === locale)?.[1] || 'English')
+    : null;
   return <div className="result-row">
     <div className="result-main">
       <div className="account"><strong title={result.inputs.join(', ')}>{result.inputs.map(short).join(', ')}</strong>
@@ -59,8 +62,12 @@ function ResultRow({ result, item, campaign, group }) {
     </div>
     {action && <div className="claim-help"><div><strong>{t('How to claim')}</strong><p>{t(action.kind === 'portal' ? 'Open the official portal and connect the wallet holding this allocation. Recheck eligibility before signing.' : 'Copy the prompt to your coding agent to build a local claim site. Review its code and transaction before connecting your wallet.')}</p></div>
       {action.kind === 'portal' ? <a className="claim-link" href={action.url} target="_blank" rel="noopener noreferrer">{t('Open official claim portal')}<ArrowUpRight size={15} /></a>
-        : <CopyButton value={deepClaimPrompt(result, item, campaign, LOCALES.find(([code]) => code === locale)?.[1] || 'English')} label="Copy DEEP claim prompt" text />}
+        : <CopyButton value={deepPrompt} label="Copy DEEP claim prompt" text />}
     </div>}
+    {deepPrompt && <details className="deep-prompt" open>
+      <summary>{t('DEEP claim-site prompt')}</summary>
+      <pre>{deepPrompt}</pre>
+    </details>}
     {item && !action && <p className="empty-note">{t('No claim action is available for this state. Recheck the on-chain evidence.')}</p>}
     {item ? <details><summary>{t('On-chain evidence')}</summary>
       <div className="evidence">
