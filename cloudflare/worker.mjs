@@ -2,13 +2,18 @@ import { SnapshotCoordinator } from './coordinator.mjs';
 import { serveSnapshots } from '../snapshots/api.mjs';
 import { fetchQuotes } from '../snapshots/prices.mjs';
 import { D1SnapshotStore } from './d1-store.mjs';
+import { handleLiveApi } from '../worker/live-api.mjs';
+import { resolveName } from '../server/chain.mjs';
+import { scanAddress } from '../server/scanner.mjs';
 
 export { SnapshotCoordinator };
 const coordinator = (env) => env.COORDINATOR.get(env.COORDINATOR.idFromName('global'));
 
 export default {
   async fetch(request, env) {
-    if (!new URL(request.url).pathname.startsWith('/api/snapshots/')) return new Response('Not found', { status: 404 });
+    const path = new URL(request.url).pathname;
+    if (path === '/api/resolve' || path === '/api/scan') return handleLiveApi(request, { resolveName, scanAddress });
+    if (!path.startsWith('/api/snapshots/')) return new Response('Not found', { status: 404 });
     const stub = coordinator(env);
     const snapshots = new D1SnapshotStore(env.SNAPSHOTS_DB);
     await snapshots.ensure();

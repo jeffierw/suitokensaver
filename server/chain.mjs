@@ -1,7 +1,8 @@
 import { normalizeInput } from '../shared/validation.mjs';
 
-const endpoint = process.env.SUI_GRAPHQL_URL || 'https://graphql.mainnet.sui.io/graphql';
-export const providerLabel = process.env.SUI_PROVIDER_LABEL || 'Sui Mainnet GraphQL';
+const environment = typeof process === 'undefined' ? {} : process.env;
+const endpoint = environment.SUI_GRAPHQL_URL || 'https://graphql.mainnet.sui.io/graphql';
+export const providerLabel = environment.SUI_PROVIDER_LABEL || 'Sui Mainnet GraphQL';
 let active = 0;
 const waiting = [];
 
@@ -22,7 +23,7 @@ export async function queryChain(query, variables = {}) {
   return limited(async () => {
     for (let attempt = 0; attempt < 2; attempt++) {
       const headers = { 'Content-Type': 'application/json' };
-      if (process.env.SUI_GRAPHQL_API_KEY) headers[process.env.SUI_GRAPHQL_KEY_HEADER || 'x-api-key'] = process.env.SUI_GRAPHQL_API_KEY;
+      if (environment.SUI_GRAPHQL_API_KEY) headers[environment.SUI_GRAPHQL_KEY_HEADER || 'x-api-key'] = environment.SUI_GRAPHQL_API_KEY;
       let response;
       try {
         response = await fetch(endpoint, {
