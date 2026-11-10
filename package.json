@@ -17,9 +17,12 @@
     "cf:dev": "wrangler dev --test-scheduled",
     "test:cloudflare": "npm run cf:build && node --test tests/cloudflare/*.test.mjs"
   },
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "dependencies": {
     "@mysten/sui": "^2.0.0",
+    "@radix-ui/react-select": "^2.4.1",
     "express": "^5.1.0",
     "lucide-react": "^0.468.0",
     "react": "^19.0.0",

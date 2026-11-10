@@ -8,7 +8,7 @@ export const CAMPAIGNS = [
   { id: 'wal-stakers', symbol: 'WAL', name: 'Walrus', round: 'Staker airdrop', date: 'August 2025', decimals: 9, color: 'wal', url: 'https://claim.walrus.xyz/', packageId: WAL_PACKAGE },
   { id: 'deep-launch', symbol: 'DEEP', name: 'DeepBook', round: 'Initial airdrop', date: 'October 2024', decimals: 6, color: 'deep', url: null, packageId: '0xc2cfa18b841df1887d931055cf41f2773c58164f719675595d020829893188a5' },
   { id: 'deep-s1', symbol: 'DEEP', name: 'DeepBook', round: 'Season 1', date: 'June 2026', decimals: 6, color: 'deep', url: null, packageId: DEEP_S1_PACKAGE },
-  { id: 'ns-launch', symbol: 'NS', name: 'SuiNS', round: 'Community airdrop', date: 'November 2024', decimals: 6, color: 'ns', url: 'https://www.claim.suins.io/', packageId: '0x3ca2fdfc90c262f5a7323cdf10f4a8960a2640a18abc0c8405b15ad7186be8f0' },
+  { id: 'ns-launch', symbol: 'NS', name: 'SuiNS', round: 'Community airdrop', date: 'November 2024', decimals: 6, color: 'ns', url: 'https://claim.suins.io/', packageId: '0x3ca2fdfc90c262f5a7323cdf10f4a8960a2640a18abc0c8405b15ad7186be8f0' },
 ];
 export const UNKNOWN_WAL = { ...CAMPAIGNS[0], id: 'wal-unknown', round: 'Unclassified distribution', date: 'Creation history unavailable' };
 

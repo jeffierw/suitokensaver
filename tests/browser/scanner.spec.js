@@ -27,10 +27,12 @@ test('groups real API results and exposes evidence', async ({ page }) => {
   await expect(season.getByText(/2027/)).toBeVisible();
   await expect(season.getByRole('link', { name: /0x9b262545/ })).toBeVisible();
   await season.locator('summary').click();
-  await page.getByLabel('Status', { exact: true }).selectOption('claimable');
+  await page.getByRole('combobox', { name: 'Status', exact: true }).click();
+  await page.getByRole('option', { name: 'Unclaimed', exact: true }).click();
   await expect(page.getByText('198.165393 DEEP', { exact: true })).toBeVisible();
   await expect(page.getByText('866 WAL', { exact: true })).toHaveCount(0);
-  await page.getByLabel('Status', { exact: true }).selectOption('all');
+  await page.getByRole('combobox', { name: 'Status', exact: true }).click();
+  await page.getByRole('option', { name: 'All statuses', exact: true }).click();
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export JSON' }).click();
   expect((await downloadPromise).suggestedFilename()).toMatch(/suitokensaver.*\.json/);
