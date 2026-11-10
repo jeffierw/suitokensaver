@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="suiGrad" x1="20" y1="10" x2="80" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4DA2FF"/>
+      <stop offset="50%" stop-color="#38E8C6"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50" cy="50" r="45" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38E8C6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="100" height="100" rx="28" fill="#0C0E14"/>
+  <rect width="100" height="100" rx="28" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="50" cy="50" r="38" fill="url(#glow)"/>
+  <!-- Sui Token Droplet + Vault Safe Keylock geometry -->
+  <path d="M50 18C42 30 30 45 30 58C30 69.0457 38.9543 78 50 78C61.0457 78 70 69.0457 70 58C70 45 58 30 50 18Z" fill="url(#suiGrad)" fill-opacity="0.15" stroke="url(#suiGrad)" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Inner Token Shield / Coin Geometry -->
+  <circle cx="50" cy="58" r="12" fill="#0C0E14" stroke="url(#suiGrad)" stroke-width="2.5"/>
+  <path d="M47 55L50 52L53 55M50 52V64" stroke="#38E8C6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Subtle sparkles -->
+  <circle cx="68" cy="32" r="2" fill="#38E8C6"/>
+  <circle cx="32" cy="36" r="1.5" fill="#4DA2FF"/>
+</svg>

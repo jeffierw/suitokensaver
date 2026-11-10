@@ -1,0 +1,16 @@
+{
+  "height": "128",
+  "htmlCode": {
+    "downloadUrl": "https://stitch.googleapis.com/v1/projects/5510102675825052347/files/da0ba2ea27a342dc9a6e7ddd7dfd5772:download",
+    "mimeType": "image/svg+xml",
+    "name": "projects/5510102675825052347/screens/da0ba2ea27a342dc9a6e7ddd7dfd5772/fileEntries/html"
+  },
+  "name": "projects/5510102675825052347/screens/da0ba2ea27a342dc9a6e7ddd7dfd5772",
+  "screenshot": {
+    "downloadUrl": "https://stitch.googleapis.com/v1/projects/5510102675825052347/files/screenshot_00065fd2ffa9ad5a022d42bd083a6a18:download",
+    "mimeType": "image/png",
+    "name": "projects/5510102675825052347/screens/da0ba2ea27a342dc9a6e7ddd7dfd5772/fileEntries/screenshot"
+  },
+  "title": "suitokensaver Favicon & Logo",
+  "width": "128"
+}

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>suitokensaver - Sui Airdrop Scanner</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#111317;color:#e2e2e6;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom,0px));}.pt-safe{padding-top:calc(env(safe-area-inset-top,0px));}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "error-container": "#93000a", "outline-variant": "#3b4a45", "surface-dim": "#111317", "error": "#ffb4ab", "tertiary": "#a2ffd0", "on-tertiary-container": "#006645", "primary-fixed-dim": "#26dfbd", "on-primary-container": "#006454", "on-secondary-container": "#e6ecff", "on-secondary-fixed": "#001a42", "on-secondary": "#002e6a", "inverse-primary": "#006b59", "primary": "#95ffe4", "secondary-fixed-dim": "#adc6ff", "outline": "#84948e", "tertiary-fixed": "#6ffbbe", "secondary-container": "#0566d9", "surface-container": "#1e2023", "on-primary-fixed": "#00201a", "tertiary-fixed-dim": "#4edea3", "primary-container": "#38e8c6", "secondary-fixed": "#d8e2ff", "surface": "#111317", "on-tertiary-fixed": "#002113", "inverse-on-surface": "#2f3034", "on-surface": "#e2e2e6", "on-error": "#690005", "surface-container-highest": "#333538", "on-surface-variant": "#bacac4", "on-tertiary-fixed-variant": "#005236", "surface-variant": "#333538", "surface-tint": "#26dfbd", "on-primary": "#00382e", "on-primary-fixed-variant": "#005143", "surface-bright": "#37393d", "surface-container-high": "#282a2d", "primary-fixed": "#54fcd9", "tertiary-container": "#59e8ac", "surface-container-lowest": "#0c0e11", "on-error-container": "#ffdad6", "surface-container-low": "#1a1c1f", "secondary": "#adc6ff", "on-tertiary": "#003824", "on-background": "#e2e2e6", "background": "#111317", "inverse-surface": "#e2e2e6", "on-secondary-fixed-variant": "#004395" }, borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" }, spacing: { gutter: "1.5rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-lg": "1.5rem", margin: "2rem", "space-md": "1rem" }, fontFamily: { "body-lg": ["Geist"], "body-sm": ["Geist"], "mono-lg": ["JetBrains Mono"], "body-md": ["Geist"], "label-caps": ["JetBrains Mono"], "headline-lg": ["Space Grotesk"], "headline-lg-mobile": ["Space Grotesk"], "headline-xl-mobile": ["Space Grotesk"], "headline-xl": ["Space Grotesk"], "mono-md": ["JetBrains Mono"], "headline-md": ["Space Grotesk"], "mono-sm": ["JetBrains Mono"] }, fontSize: { "body-lg": ["18px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "400" }], "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }], "mono-lg": ["16px", { lineHeight: "24px", letterSpacing: "-0.02em", fontWeight: "500" }], "body-md": ["15px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "400" }], "label-caps": ["10px", { lineHeight: "14px", letterSpacing: "0.08em", fontWeight: "600" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "600" }], "headline-lg-mobile": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-xl-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "600" }], "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.03em", fontWeight: "600" }], "mono-md": ["13px", { lineHeight: "18px", letterSpacing: "0em", fontWeight: "400" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "500" }], "mono-sm": ["11px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl"><div class="h-16 px-space-md flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="suitokensaver Favicon &amp; Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ALJJyrDyTeeC2rSdtW1_ErBt5zxNhdhDQGbnOLUWJh82TUDz2msvBC0QrpCGft0UIEFigjpr_lTeXX1Q-7O8smxB8Qg9yfjR5_socXWvR-PgaZ8df7VNYBB9qHSL4Ld3otSbfsZ7Hfj82hHLGKQfd571qWcNibT6TwfSQl1i-r67d99LFFu_0BV0YUF_Eea7zaHOgYoUJ3GZlij6INAEYZkulyGqDURzRG9R56lGdYnH2NcK"/><div class="flex flex-col min-w-0"><span class="font-headline-md text-headline-md tracking-tight text-on-surface leading-tight truncate">suitokensaver</span><div class="flex items-center gap-space-xs"><span class="font-label-caps text-label-caps text-on-surface-variant truncate uppercase">Scanner</span><span class="text-outline-variant font-mono-sm text-mono-sm">•</span><span class="inline-flex items-center gap-1 bg-surface-container-high px-1.5 py-0.5 rounded-lg text-primary font-mono-sm text-mono-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>Sui Mainnet</span></div></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><div class="relative flex items-center"><select aria-label="Language Selector" class="appearance-none bg-surface-container-low text-on-surface font-mono-sm text-mono-sm pl-2 pr-6 py-1 rounded-lg focus:outline-none focus:text-primary cursor-pointer"><option selected="" value="en">EN</option><option value="zh">ZH</option><option value="ja">JA</option></select><span class="material-symbols-outlined absolute right-1 pointer-events-none text-on-surface-variant text-[14px]">expand_more</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-space-md space-y-space-md">
+<!-- 1. Top Philosophy Ribbon -->
+<div class="w-full bg-surface-container-low rounded-xl p-space-sm shadow-md flex items-center justify-between overflow-hidden relative">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse flex-shrink-0"></div>
+<p class="font-label-caps text-label-caps text-primary tracking-wider uppercase truncate">
+        Zero Wallet Connect • 100% Read-Only Safety • Zero Drain Risk
+      </p>
+</div>
+<span class="material-symbols-outlined text-primary text-[16px] flex-shrink-0">verified_user</span>
+</div>
+<!-- Hero Visual Accent Image -->
+<div class="relative w-full h-36 rounded-xl overflow-hidden shadow-lg bg-surface-container-high">
+<img class="w-full h-full object-cover opacity-60" data-alt="An ultra modern, abstract 3D oceanic data crystal glowing with electric cyan, aqua, and deep void black highlights, symbolizing Sui Move blockchain immutability and high-speed cryptographic verification in a sleek hyper-realistic minimal studio lighting setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLwwN_RXvMBEZjMbasGyE5YTxkuD1q50w9kN4CsJFPvFRLkjNrQT87kBedAv2ftzL4JrUJ8ud74FGHeYXw0FeN_mKoUINSVSCHg-hyyaNYuHTvq2k-1Ye6krX_4b5LRhOZyh5c6tRWJ7a15JgcoPsFOC9IA1yHZ-r6Mg1zzxuUHBR4dCCX0wUALyuAD9DxC_ddvQBgCwKQKFueb2WhqPhCNEnpSCqINYeW1Zapyf4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/60 to-transparent flex flex-col justify-end p-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">travel_explore</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Sui Move Object Scanner</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight mt-0.5">
+        Audit Forgotten Drops
+      </h2>
+</div>
+</div>
+<!-- 2. Search & Query Hub -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-md space-y-space-sm relative">
+<div class="flex items-center justify-between">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="addressInput">
+        Public Sui Target
+      </label>
+<button class="bg-surface-container-high hover:bg-surface-bright active:scale-95 transition-all duration-150 px-2 py-0.5 rounded-lg text-primary font-mono-sm text-mono-sm flex items-center gap-1" id="demoPillBtn" type="button">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+        Try Demo: whale.sui
+      </button>
+</div>
+<!-- Input Box -->
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline text-[20px] pointer-events-none">search</span>
+<input class="w-full bg-surface-container-lowest text-on-surface font-mono-md text-mono-md pl-10 pr-12 py-3 rounded-lg focus:outline-none focus:text-primary transition-colors" id="addressInput" placeholder="Enter Sui address (0x...) or SuiNS (.sui)" type="text" value="mysten_early.sui"/>
+<button class="absolute right-2 p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center active:scale-90" id="qrBtn" title="Scan QR Code" type="button">
+<span class="material-symbols-outlined text-[18px]">qr_code_scanner</span>
+</button>
+</div>
+<!-- Primary Action CTA with spring feedback -->
+<button class="w-full bg-primary-container hover:bg-primary active:scale-[0.985] text-on-primary-container font-mono-md text-mono-md py-3 rounded-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-200" id="inspectCtaBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">radar</span>
+<span>Inspect Sui Objects</span>
+</button>
+</div>
+<!-- 3. Live Sui Ecosystem Overview Stats (Bento Grid) -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm space-y-1">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-tertiary">savings</span>
+<span class="font-label-caps text-label-caps uppercase">Total Recovered</span>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">$3.4M+</div>
+<span class="font-mono-sm text-mono-sm text-tertiary">Across 42,910 accounts</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm space-y-1">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">hub</span>
+<span class="font-label-caps text-label-caps uppercase">Move Protocols</span>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">18 Live</div>
+<span class="font-mono-sm text-mono-sm text-secondary">Cetus, Scallop, Navi+</span>
+</div>
+<div class="col-span-2 bg-surface-container-low rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Average Forgotten Claim</span>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-primary mt-0.5">$428 SUI</div>
+</div>
+<!-- Mini Sparkline inline visual -->
+<div class="w-24 h-10 flex items-end gap-1.5 pr-1">
+<div class="w-2.5 bg-surface-container-highest rounded-t h-3"></div>
+<div class="w-2.5 bg-surface-container-highest rounded-t h-5"></div>
+<div class="w-2.5 bg-primary/40 rounded-t h-4"></div>
+<div class="w-2.5 bg-primary/70 rounded-t h-7"></div>
+<div class="w-2.5 bg-primary rounded-t h-9"></div>
+<div class="w-2.5 bg-tertiary rounded-t h-10"></div>
+</div>
+</div>
+</div>
+<!-- 4. Instant Scan Preview Results -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-md space-y-space-md">
+<!-- Header with Verified Address readout -->
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-caps text-label-caps text-tertiary uppercase">Inspection Ready</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-0.5">mysten_early.sui</h3>
+<p class="font-mono-sm text-mono-sm text-on-surface-variant">0x9a4f89d31...b703e21</p>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 bg-surface-container-high rounded-full font-mono-sm text-mono-sm text-primary">
+        4 Claimables
+      </span>
+</div>
+<!-- Value Overview Card -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Total Recoverable Assets</span>
+<div class="font-headline-xl-mobile text-headline-xl-mobile text-primary leading-none mt-1">
+        $6,250.00 <span class="font-mono-sm text-mono-sm text-on-surface-variant font-normal">USD</span>
+</div>
+<p class="font-mono-md text-mono-md text-on-surface mt-1">
+        1,840.50 SUI <span class="text-on-surface-variant">+ $1,420 Partner Tokens</span>
+</p>
+</div>
+<!-- Object Inventory List -->
+<div class="space-y-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Discovered Forgotten Objects</span>
+<!-- Row 1: Cetus -->
+<div class="bg-surface-container-low hover:bg-surface-container-high transition-colors rounded-lg p-3 flex items-center justify-between gap-2">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">water_drop</span>
+</div>
+<div class="min-w-0">
+<p class="font-body-md text-body-md text-on-surface truncate">Cetus Liquidity Loyalty</p>
+<p class="font-mono-sm text-mono-sm text-on-surface-variant truncate">Obj ID: 0x51b...9a4</p>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-mono-md text-mono-md text-primary block">3,200 CETUS</span>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">~$960.00</span>
+</div>
+</div>
+<!-- Row 2: DeepBook -->
+<div class="bg-surface-container-low hover:bg-surface-container-high transition-colors rounded-lg p-3 flex items-center justify-between gap-2">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 text-secondary">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+</div>
+<div class="min-w-0">
+<p class="font-body-md text-body-md text-on-surface truncate">DeepBook DBUS Drop</p>
+<p class="font-mono-sm text-mono-sm text-on-surface-variant truncate">Obj ID: 0x98d...11c</p>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-mono-md text-mono-md text-secondary block">12,500 DEEP</span>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">~$1,250.00</span>
+</div>
+</div>
+<!-- Row 3: Scallop -->
+<div class="bg-surface-container-low hover:bg-surface-container-high transition-colors rounded-lg p-3 flex items-center justify-between gap-2">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+<div class="min-w-0">
+<p class="font-body-md text-body-md text-on-surface truncate">Scallop Borrow Incentive</p>
+<p class="font-mono-sm text-mono-sm text-on-surface-variant truncate">Obj ID: 0x12a...77e</p>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-mono-md text-mono-md text-tertiary block">450 SCA</span>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">~$210.00</span>
+</div>
+</div>
+<!-- Row 4: Sui Move Early Dev -->
+<div class="bg-surface-container-low hover:bg-surface-container-high transition-colors rounded-lg p-3 flex items-center justify-between gap-2">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">code</span>
+</div>
+<div class="min-w-0">
+<p class="font-body-md text-body-md text-on-surface truncate">Sui Move Early Dev</p>
+<p class="font-mono-sm text-mono-sm text-on-surface-variant truncate">Obj ID: 0x002...ff1</p>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-mono-md text-mono-md text-primary block">850 SUI</span>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">~$3,830.00</span>
+</div>
+</div>
+</div>
+<!-- 5. Quick Action CTA with Tactile Glow Feedback -->
+<div class="pt-2">
+<button class="w-full bg-secondary-container hover:bg-secondary-container/90 active:scale-[0.985] text-on-secondary-container font-mono-md text-mono-md py-3.5 px-4 rounded-lg flex items-center justify-between shadow-lg transition-all duration-150" id="exportStudioBtn" type="button">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="font-medium">Export to AI Signer Studio</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<p class="font-mono-sm text-mono-sm text-on-surface-variant text-center mt-2">
+        Generates zero-risk, isolated local terminal commands
+      </p>
+</div>
+</div>
+<!-- Protocol Ecosystem Ribbon (Visual Richness) -->
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Protocols Tracked in Real-Time</span>
+<span class="font-mono-sm text-mono-sm text-primary">18/18 Synced</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-mono-sm text-mono-sm">Cetus</span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-mono-sm text-mono-sm">Scallop</span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-mono-sm text-mono-sm">Navi</span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-mono-sm text-mono-sm">DeepBook</span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-mono-sm text-mono-sm">Turbos</span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-mono-sm text-mono-sm">Aftermath</span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-mono-sm text-mono-sm">Bluefin</span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-mono-sm text-mono-sm">Typus</span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-mono-sm text-mono-sm">Bucket</span>
+</div>
+</div>
+<!-- 6. Sovereign Security FAQ Card -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-md space-y-space-sm">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+<h4 class="font-headline-md text-headline-md text-on-surface">Why no wallet connection?</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+      We believe in sovereign security. Inspect on-chain Move objects publicly, then claim in your own isolated local environment using our AI prompt generator.
+    </p>
+<div class="bg-surface-container-lowest rounded-lg p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]">lock_reset</span>
+<span class="font-mono-sm text-mono-sm text-on-surface">Zero private keys stored or transmitted</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]">check</span>
+</div>
+</div>
+</div>
+<script>
+  (function initScannerLanding() {
+    const addressInput = document.getElementById('addressInput');
+    const demoPillBtn = document.getElementById('demoPillBtn');
+    const inspectCtaBtn = document.getElementById('inspectCtaBtn');
+    const qrBtn = document.getElementById('qrBtn');
+    const exportStudioBtn = document.getElementById('exportStudioBtn');
+
+    if (demoPillBtn && addressInput) {
+      demoPillBtn.addEventListener('click', () => {
+        addressInput.value = 'whale.sui';
+        addressInput.dispatchEvent(new Event('input'));
+        demoPillBtn.classList.add('scale-95');
+        setTimeout(() => demoPillBtn.classList.remove('scale-95'), 120);
+      });
+    }
+
+    if (inspectCtaBtn && addressInput) {
+      inspectCtaBtn.addEventListener('click', () => {
+        const val = addressInput.value.trim();
+        if (!val) {
+          addressInput.focus();
+          return;
+        }
+        inspectCtaBtn.classList.add('opacity-80');
+        const originalContent = inspectCtaBtn.innerHTML;
+        inspectCtaBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Scanning Objects...</span>';
+        
+        setTimeout(() => {
+          inspectCtaBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done</span><span>Scan Complete!</span>';
+          setTimeout(() => {
+            inspectCtaBtn.innerHTML = originalContent;
+            inspectCtaBtn.classList.remove('opacity-80');
+          }, 1200);
+        }, 900);
+      });
+    }
+
+    if (qrBtn) {
+      qrBtn.addEventListener('click', () => {
+        alert('Camera preview initialized in non-invasive read-only mode.');
+      });
+    }
+
+    if (exportStudioBtn) {
+      exportStudioBtn.addEventListener('click', () => {
+        exportStudioBtn.classList.add('opacity-90');
+        setTimeout(() => exportStudioBtn.classList.remove('opacity-90'), 200);
+        const aiTab = document.querySelector('nav a[data-path="ai-signer"]');
+        if (aiTab) {
+          aiTab.click();
+        }
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-space-sm"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 transition-colors duration-150 text-primary font-semibold" data-path="scanner" href="#"><span class="material-symbols-outlined text-[22px]">radar</span><span class="font-mono-sm text-mono-sm">Scanner</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant transition-colors duration-150 hover:text-on-surface" data-path="vault" href="#"><span class="material-symbols-outlined text-[22px]">token</span><span class="font-mono-sm text-mono-sm">Vault</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant transition-colors duration-150 hover:text-on-surface" data-path="ai-signer" href="#"><span class="material-symbols-outlined text-[22px]">terminal</span><span class="font-mono-sm text-mono-sm">AI Signer</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant transition-colors duration-150 hover:text-on-surface" data-path="guide" href="#"><span class="material-symbols-outlined text-[22px]">menu_book</span><span class="font-mono-sm text-mono-sm">Guide</span></a></div></nav></body></html>

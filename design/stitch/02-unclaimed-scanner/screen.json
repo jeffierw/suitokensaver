@@ -1,0 +1,17 @@
+{
+  "deviceType": "MOBILE",
+  "height": "3768",
+  "htmlCode": {
+    "downloadUrl": "https://stitch.googleapis.com/v1/projects/5510102675825052347/files/b22535e42e7c4edeb3f555e680a85552:download",
+    "mimeType": "text/html",
+    "name": "projects/5510102675825052347/screens/b22535e42e7c4edeb3f555e680a85552/fileEntries/html"
+  },
+  "name": "projects/5510102675825052347/screens/b22535e42e7c4edeb3f555e680a85552",
+  "screenshot": {
+    "downloadUrl": "https://stitch.googleapis.com/v1/projects/5510102675825052347/files/screenshot_00065fd303d86df002d3e91b790fc2e2:download",
+    "mimeType": "image/png",
+    "name": "projects/5510102675825052347/screens/b22535e42e7c4edeb3f555e680a85552/fileEntries/screenshot"
+  },
+  "title": "suitokensaver - Sui Unclaimed Scanner",
+  "width": "780"
+}

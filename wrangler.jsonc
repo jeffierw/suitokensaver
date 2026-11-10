@@ -1,0 +1,29 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "suitokensaver-snapshots",
+  "main": "cloudflare/worker.mjs",
+  "compatibility_date": "2026-05-03",
+  "workers_dev": true,
+  "vars": {
+    "SUI_GRAPHQL_URL": "https://graphql.mainnet.sui.io/graphql"
+  },
+  "triggers": {
+    "crons": ["0 */6 * * *", "*/10 * * * *"]
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "COORDINATOR", "class_name": "SnapshotCoordinator" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["SnapshotCoordinator"] }],
+  "r2_buckets": [{ "binding": "SNAPSHOTS", "bucket_name": "suitokensaver-snapshots" }],
+  "queues": {
+    "producers": [{ "binding": "SCAN_JOBS", "queue": "suitokensaver-scan-jobs" }],
+    "consumers": [{
+      "queue": "suitokensaver-scan-jobs",
+      "max_batch_size": 1,
+      "max_concurrency": 2,
+      "max_retries": 3,
+      "dead_letter_queue": "suitokensaver-scan-dead"
+    }]
+  },
+  "observability": { "enabled": true }
+}

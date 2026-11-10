@@ -1,0 +1,17 @@
+{
+  "deviceType": "MOBILE",
+  "height": "3136",
+  "htmlCode": {
+    "downloadUrl": "https://stitch.googleapis.com/v1/projects/5510102675825052347/files/a47505e0e31d4ca78d09f2f7c5a63161:download",
+    "mimeType": "text/html",
+    "name": "projects/5510102675825052347/screens/a47505e0e31d4ca78d09f2f7c5a63161/fileEntries/html"
+  },
+  "name": "projects/5510102675825052347/screens/a47505e0e31d4ca78d09f2f7c5a63161",
+  "screenshot": {
+    "downloadUrl": "https://stitch.googleapis.com/v1/projects/5510102675825052347/files/screenshot_00065fd3045c741e00303e5ca529c16f:download",
+    "mimeType": "image/png",
+    "name": "projects/5510102675825052347/screens/a47505e0e31d4ca78d09f2f7c5a63161/fileEntries/screenshot"
+  },
+  "title": "suitokensaver - Unclaimed Sui Vault",
+  "width": "780"
+}

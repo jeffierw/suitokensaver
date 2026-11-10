@@ -1,0 +1,277 @@
+{
+  "createTime": "2026-11-09T07:27:08.538408Z",
+  "designTheme": {
+    "bodyFont": "GEIST",
+    "bodyFontFamily": "Geist",
+    "colorMode": "DARK",
+    "colorVariant": "FIDELITY",
+    "customColor": "#10b981",
+    "designMd": "---\nname: Obsidian Precision\ncolors:\n  surface: '#111317'\n  surface-dim: '#111317'\n  surface-bright: '#37393e'\n  surface-container-lowest: '#0c0e12'\n  surface-container-low: '#1a1c20'\n  surface-container: '#1e2024'\n  surface-container-high: '#282a2e'\n  surface-container-highest: '#333539'\n  on-surface: '#e2e2e8'\n  on-surface-variant: '#bbcabf'\n  inverse-surface: '#e2e2e8'\n  inverse-on-surface: '#2f3035'\n  outline: '#86948a'\n  outline-variant: '#3c4a42'\n  surface-tint: '#4edea3'\n  primary: '#4edea3'\n  on-primary: '#003824'\n  primary-container: '#10b981'\n  on-primary-container: '#00422b'\n  inverse-primary: '#006c49'\n  secondary: '#4cd7f6'\n  on-secondary: '#003640'\n  secondary-container: '#03b5d3'\n  on-secondary-container: '#00424e'\n  tertiary: '#ffb3af'\n  on-tertiary: '#650911'\n  tertiary-container: '#fc7c78'\n  on-tertiary-container: '#711419'\n  error: '#ffb4ab'\n  on-error: '#690005'\n  error-container: '#93000a'\n  on-error-container: '#ffdad6'\n  primary-fixed: '#6ffbbe'\n  primary-fixed-dim: '#4edea3'\n  on-primary-fixed: '#002113'\n  on-primary-fixed-variant: '#005236'\n  secondary-fixed: '#acedff'\n  secondary-fixed-dim: '#4cd7f6'\n  on-secondary-fixed: '#001f26'\n  on-secondary-fixed-variant: '#004e5c'\n  tertiary-fixed: '#ffdad7'\n  tertiary-fixed-dim: '#ffb3af'\n  on-tertiary-fixed: '#410005'\n  on-tertiary-fixed-variant: '#842225'\n  background: '#111317'\n  on-background: '#e2e2e8'\n  surface-variant: '#333539'\ntypography:\n  headline-xl:\n    fontFamily: Geist\n    fontSize: 36px\n    fontWeight: '600'\n    lineHeight: 44px\n    letterSpacing: -0.03em\n  headline-xl-mobile:\n    fontFamily: Geist\n    fontSize: 28px\n    fontWeight: '600'\n    lineHeight: 34px\n    letterSpacing: -0.025em\n  headline-lg:\n    fontFamily: Geist\n    fontSize: 24px\n    fontWeight: '600'\n    lineHeight: 32px\n    letterSpacing: -0.025em\n  headline-md:\n    fontFamily: Geist\n    fontSize: 20px\n    fontWeight: '500'\n    lineHeight: 28px\n    letterSpacing: -0.02em\n  headline-sm:\n    fontFamily: Geist\n    fontSize: 16px\n    fontWeight: '500'\n    lineHeight: 24px\n    letterSpacing: -0.015em\n  body-lg:\n    fontFamily: Geist\n    fontSize: 16px\n    fontWeight: '400'\n    lineHeight: 24px\n    letterSpacing: -0.01em\n  body-md:\n    fontFamily: Geist\n    fontSize: 14px\n    fontWeight: '400'\n    lineHeight: 20px\n    letterSpacing: -0.005em\n  body-sm:\n    fontFamily: Geist\n    fontSize: 12px\n    fontWeight: '400'\n    lineHeight: 16px\n    letterSpacing: 0em\n  label-md:\n    fontFamily: JetBrains Mono\n    fontSize: 13px\n    fontWeight: '500'\n    lineHeight: 18px\n    letterSpacing: -0.01em\n  label-sm:\n    fontFamily: JetBrains Mono\n    fontSize: 11px\n    fontWeight: '500'\n    lineHeight: 14px\n    letterSpacing: 0.02em\n  code-metric:\n    fontFamily: JetBrains Mono\n    fontSize: 18px\n    fontWeight: '500'\n    lineHeight: 24px\n    letterSpacing: -0.02em\nrounded:\n  sm: 0.125rem\n  DEFAULT: 0.25rem\n  md: 0.375rem\n  lg: 0.5rem\n  xl: 0.75rem\n  full: 9999px\nspacing:\n  gutter: 1rem\n  gutter-desktop: 1.5rem\n  margin: 1rem\n  margin-desktop: 2.5rem\n  space-xs: 0.25rem\n  space-sm: 0.5rem\n  space-md: 0.75rem\n  space-lg: 1.25rem\n  space-xl: 2rem\n---\n\n## Brand & Style\n\nThis design system embodies hyper-refined, precision-engineered product design tailored for sophisticated Web3 applications, decentralized protocol management, and high-stakes asset monitoring. The aesthetic converges structural minimalism with tactile depth, drawing direct inspiration from high-end hardware, dark-room editing suites, and meticulously crafted micro-interactions.\n\nThe visual tone is uncompromisingly calm, technical, and deliberate:\n- **Tone:** Authoritative, silent, surgical, and premium.\n- **Audience:** Crypto-native engineers, protocol architects, sophisticated liquidity providers, and precision tool enthusiasts who value speed, density, and zero ambient friction.\n- **Emotional Response:** Confidence, tactical control, clarity during complex state changes, and appreciation for kinetic polish.\n\nVisual execution rejects decorative gradients and overt crypto cliches. Depth is established through 1-pixel hairline borders, restrained translucent overlays, subtle inner highlights simulating specular reflection, and razor-sharp typographic tracking.\n\n## Colors\n\nThe palette relies on deep, non-pure-black anchors that mitigate eye fatigue while providing high dynamic contrast for telemetry, numeric feeds, and critical state triggers.\n\n### Roles and Application\n- **Base Canvas (`#0B0D11`):** The foundational substrate. Used for application-level backgrounds and viewports.\n- **Surface Elevation (`#13171F`):** Primary card, sidebar, and container background. Imparts subtle warm-neutrality over raw black.\n- **Surface Elevated Interactive (`#1A202C`):** Hover states, popovers, and interactive modules.\n- **Primary Accent (`#10B981`):** Signal Emerald. Applied exclusively to confirmed transactions, claimable balances, terminal status affirmations, and positive rate indicators.\n- **Secondary Accent (`#06B6D4`):** Kinetic Cyan. Used for active network links, cryptographic hashes, secondary highlights, and precision focus rings.\n- **Hairline Border Tiers:** \n  - `border-subtle`: `rgba(255, 255, 255, 0.08)` for container perimeters.\n  - `border-focus`: `rgba(255, 255, 255, 0.16)` for active hover/focus states.\n  - `border-active`: `rgba(16, 185, 129, 0.4)` for successful terminal states.\n- **Foreground Contrast Hierarchy:**\n  - `text-primary`: `#F9FAFB` (high contrast, crisp metrics, critical headers).\n  - `text-secondary`: `#9CA3AF` (labels, tabular keys, secondary values).\n  - `text-tertiary`: `#4B5563` (disabled states, inactive breadcrumbs, unit suffixes).\n\n## Typography\n\nTypography prioritizes density, optical balance, and character discernment. Geist governs all conversational elements, interfaces, and primary view headers, anchored by tight negative letter spacing to retain structural tightness at large scales. JetBrains Mono is designated for all machine-read outputs, wallet addresses, block numbers, transaction hashes, and micro metrics.\n\n- **Tabular Figures:** All numeric displays (balances, token ratios, slippage percentages) must enforce tabular numerals (`font-variant-numeric: tabular-nums`) to prevent layout shifts during live RPC state polls.\n- **Negative Tracking:** Headings enforce `-0.02em` to `-0.03em` tracking, yielding a solid, engineered baseline.\n- **Micro Labels:** Labels smaller than 12px require JetBrains Mono at medium weight with positive tracking (`+0.02em`) to maintain legibility against dark surfaces.\n\n## Layout & Spacing\n\nThe layout model utilizes a fluid 12-column system constrained to an ultra-dense maximum width of 1280px for desktop dashboards, collapsing to an adaptive 4-column framework on mobile devices.\n\n### Rules of Rhythm\n- **Internal Padding:** Component padding strictly relies on `space-sm` (8px) for compact toolbars, `space-md` (12px) for form fields and list items, and `space-lg` (20px) for analytical surfaces.\n- **Structural Grouping:** Related items (like token inputs and balance selectors) cluster via `space-xs` (4px) or `space-sm` (8px). Structural modules maintain `space-xl` (32px) margins to preserve clarity without wasteful voids.\n- **Reflow Logic:** Multi-column trading view or multi-card staking configurations fold horizontally into sequential vertical stacks at the `768px` breakpoint. Mobile margins clamp to `1rem` to maximize touch canvas efficiency.\n\n## Elevation & Depth\n\nDepth is tactile and physical without relying on bloated drop-shadows. The system simulates directional ambient light using layered alpha-composited borders and subtle specular reflections:\n\n1. **Base Plate (Elevation 0):** Canvas `#0B0D11`. No shadows, no borders.\n2. **Tactile Panel (Elevation 1):** Solid `#13171F` background paired with a `1px` outer hairline border of `rgba(255, 255, 255, 0.07)` and an inset shadow: `inset 0px 1px 0px 0px rgba(255, 255, 255, 0.05)`. This creates a crisp top-edge catchlight.\n3. **Floating Overlay (Elevation 2):** Modals, dropdown flyouts, and wallet connect popovers use `#13171F` backed by `backdrop-filter: blur(12px)`. Outlines use `rgba(255, 255, 255, 0.12)`, anchored by a subtle ambient drop shadow: `0 12px 32px -4px rgba(0, 0, 0, 0.6)`.\n4. **Accent Glow (Status Elevation):** State-dependent indicators (e.g., pending execution or affirmative claims) use localized radial blooms: `box-shadow: 0 0 16px -2px rgba(16, 185, 129, 0.2)`.\n\n## Shapes\n\nThe design system employs a soft, machine-milled curvature profile (`roundedness: 1`). Radii remain restrained to reinforce structural rigor and maximize data space:\n\n- **Micro Radii (`rounded-sm` / 2px):** Tooltips, tiny status indicators, and embedded inline code blocks.\n- **Default Radii (`rounded` / 4px):** Primary buttons, text inputs, segmented pill switchers, and list items.\n- **Container Radii (`rounded-lg` / 8px):** Cards, modal shells, data tables, and wallet status containers.\n- **Maximum Radii (`rounded-xl` / 12px):** Top-level app shell containers and standalone interactive modal dialogs. Pill shapes are strictly forbidden except for live indicator dots.\n\n## Components\n\n### Buttons\n- **Primary (Action):** Background `#10B981`, foreground `#0B0D11`, font weight 500, font size `14px`. Hover: `#059669`. Active: scale `0.985` with ease-out timing `100ms`.\n- **Secondary (Tactile Neutral):** Background `#13171F`, border `1px solid rgba(255, 255, 255, 0.08)`, inner shadow `inset 0 1px 0 rgba(255, 255, 255, 0.06)`, text `#F9FAFB`. Hover: border `rgba(255, 255, 255, 0.16)`, background `#1A202C`.\n- **Ghost:** Background transparent, text `#9CA3AF`. Hover: background `rgba(255, 255, 255, 0.04)`, text `#F9FAFB`.\n\n### Input Fields\n- Dark surface `#0B0D11` housed inside an elevated container.\n- Height: 40px (compact) or 48px (prominent swap interfaces).\n- Border: `1px solid rgba(255, 255, 255, 0.08)`. Focus: border `1px solid #06B6D4` paired with an inner box-shadow `inset 0 0 0 1px #06B6D4`.\n- Integrated token select action on the right edge using a tactile ghost chip.\n\n### Wallet Connection Indicator\n- Segmented container combining network status and truncated address (`0x...`).\n- Left indicator: `6px` pulsing LED dot (Green `#10B981` when connected, Amber `#F59E0B` on wrong network).\n- Network tag: Mono typography (`JetBrains Mono`, `11px`), subtle surface fill `rgba(255, 255, 255, 0.04)`.\n- Interactive trigger on hover opens address drawer; interactive border transition to `rgba(255, 255, 255, 0.18)`.\n\n### Badges & Chips\n- Padding: `2px 8px`. Height: `20px`. Font: `JetBrains Mono`, `11px`, `fontWeight: 500`.\n- **Success/Claimable:** Border `rgba(16, 185, 129, 0.25)`, background `rgba(16, 185, 129, 0.08)`, text `#10B981`.\n- **Info/Network:** Border `rgba(6, 182, 212, 0.25)`, background `rgba(6, 182, 212, 0.08)`, text `#06B6D4`.\n- **Neutral:** Border `rgba(255, 255, 255, 0.08)`, background `rgba(255, 255, 255, 0.03)`, text `#9CA3AF`.\n\n### Checkboxes & Switch Controls\n- Checkbox: 16x16px square, radius 3px. Unchecked: `1px solid rgba(255, 255, 255, 0.2)`. Checked: `#10B981` with an SVG sharp check icon in `#0B0D11`.\n- Micro-Toggle Switch: Width 28px, height 16px. Background `rgba(255, 255, 255, 0.1)`. Active background `#10B981`. Knob: 12x12px solid white circle, translating with `cubic-bezier(0.16, 1, 0.3, 1)` in 150ms.\n\n### Cards & Data Panels\n- Primary containment: Background `#13171F`, border `1px solid rgba(255, 255, 255, 0.07)`.\n- Edge specular detail: top-border inner highlight `inset 0px 1px 0px 0px rgba(255, 255, 255, 0.04)`.\n- Header separator: hairline border-bottom `1px solid rgba(255, 255, 255, 0.05)`.\n- Hoverable interactive cards enforce a `translateY(-1px)` kinetic lift and highlight border `rgba(255, 255, 255, 0.14)`.",
+    "font": "GEIST",
+    "headlineFont": "GEIST",
+    "headlineFontFamily": "Geist",
+    "labelFont": "JETBRAINS_MONO",
+    "labelFontFamily": "JetBrains Mono",
+    "namedColors": {
+      "background": "#111317",
+      "error": "#ffb4ab",
+      "error_container": "#93000a",
+      "inverse_on_surface": "#2f3035",
+      "inverse_primary": "#006c49",
+      "inverse_surface": "#e2e2e8",
+      "on_background": "#e2e2e8",
+      "on_error": "#690005",
+      "on_error_container": "#ffdad6",
+      "on_primary": "#003824",
+      "on_primary_container": "#00422b",
+      "on_primary_fixed": "#002113",
+      "on_primary_fixed_variant": "#005236",
+      "on_secondary": "#003640",
+      "on_secondary_container": "#00424e",
+      "on_secondary_fixed": "#001f26",
+      "on_secondary_fixed_variant": "#004e5c",
+      "on_surface": "#e2e2e8",
+      "on_surface_variant": "#bbcabf",
+      "on_tertiary": "#650911",
+      "on_tertiary_container": "#711419",
+      "on_tertiary_fixed": "#410005",
+      "on_tertiary_fixed_variant": "#842225",
+      "outline": "#86948a",
+      "outline_variant": "#3c4a42",
+      "primary": "#4edea3",
+      "primary_container": "#10b981",
+      "primary_fixed": "#6ffbbe",
+      "primary_fixed_dim": "#4edea3",
+      "secondary": "#4cd7f6",
+      "secondary_container": "#03b5d3",
+      "secondary_fixed": "#acedff",
+      "secondary_fixed_dim": "#4cd7f6",
+      "surface": "#111317",
+      "surface_bright": "#37393e",
+      "surface_container": "#1e2024",
+      "surface_container_high": "#282a2e",
+      "surface_container_highest": "#333539",
+      "surface_container_low": "#1a1c20",
+      "surface_container_lowest": "#0c0e12",
+      "surface_dim": "#111317",
+      "surface_tint": "#4edea3",
+      "surface_variant": "#333539",
+      "tertiary": "#ffb3af",
+      "tertiary_container": "#fc7c78",
+      "tertiary_fixed": "#ffdad7",
+      "tertiary_fixed_dim": "#ffb3af"
+    },
+    "overrideNeutralColor": "#0b0d11",
+    "overridePrimaryColor": "#10b981",
+    "overrideSecondaryColor": "#06b6d4",
+    "roundness": "ROUND_FOUR",
+    "spacing": {
+      "gutter": "1rem",
+      "gutter-desktop": "1.5rem",
+      "margin": "1rem",
+      "margin-desktop": "2.5rem",
+      "space-lg": "1.25rem",
+      "space-md": "0.75rem",
+      "space-sm": "0.5rem",
+      "space-xl": "2rem",
+      "space-xs": "0.25rem"
+    },
+    "spacingScale": 2,
+    "typography": {
+      "body-lg": {
+        "fontFamily": "Geist",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "letterSpacing": "-0.01em",
+        "lineHeight": "24px"
+      },
+      "body-md": {
+        "fontFamily": "Geist",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "letterSpacing": "-0.005em",
+        "lineHeight": "20px"
+      },
+      "body-sm": {
+        "fontFamily": "Geist",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "letterSpacing": "0em",
+        "lineHeight": "16px"
+      },
+      "code-metric": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "letterSpacing": "-0.02em",
+        "lineHeight": "24px"
+      },
+      "headline-lg": {
+        "fontFamily": "Geist",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "letterSpacing": "-0.025em",
+        "lineHeight": "32px"
+      },
+      "headline-md": {
+        "fontFamily": "Geist",
+        "fontSize": "20px",
+        "fontWeight": "500",
+        "letterSpacing": "-0.02em",
+        "lineHeight": "28px"
+      },
+      "headline-sm": {
+        "fontFamily": "Geist",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "letterSpacing": "-0.015em",
+        "lineHeight": "24px"
+      },
+      "headline-xl": {
+        "fontFamily": "Geist",
+        "fontSize": "36px",
+        "fontWeight": "600",
+        "letterSpacing": "-0.03em",
+        "lineHeight": "44px"
+      },
+      "headline-xl-mobile": {
+        "fontFamily": "Geist",
+        "fontSize": "28px",
+        "fontWeight": "600",
+        "letterSpacing": "-0.025em",
+        "lineHeight": "34px"
+      },
+      "label-md": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "letterSpacing": "-0.01em",
+        "lineHeight": "18px"
+      },
+      "label-sm": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": "11px",
+        "fontWeight": "500",
+        "letterSpacing": "0.02em",
+        "lineHeight": "14px"
+      }
+    }
+  },
+  "deviceType": "MOBILE",
+  "metadata": {
+    "userRole": "OWNER"
+  },
+  "name": "projects/5510102675825052347",
+  "origin": "WEB",
+  "projectType": "TEXT_TO_UI_PRO",
+  "screenInstances": [
+    {
+      "height": 2020,
+      "id": "76d6f9aa067b45c4a20214043c2b5a7a",
+      "label": "suitokensaver - AI Signer & Skill Prompt",
+      "sourceScreen": "projects/5510102675825052347/screens/76d6f9aa067b45c4a20214043c2b5a7a",
+      "width": 390,
+      "x": 2578,
+      "y": 2092
+    },
+    {
+      "height": 1836,
+      "id": "988189597836471aaf3d60d80e1528ef",
+      "label": "BeaconDrop - 空投资格雷达与探索",
+      "sourceScreen": "projects/5510102675825052347/screens/988189597836471aaf3d60d80e1528ef",
+      "width": 390,
+      "x": 1478
+    },
+    {
+      "height": 1568,
+      "id": "a47505e0e31d4ca78d09f2f7c5a63161",
+      "label": "suitokensaver - Unclaimed Sui Vault",
+      "sourceScreen": "projects/5510102675825052347/screens/a47505e0e31d4ca78d09f2f7c5a63161",
+      "width": 390,
+      "x": 1670,
+      "y": 2092
+    },
+    {
+      "height": 540,
+      "id": "assets_6c2d5d6d052c4bdf9c32e0d1b394b2e8",
+      "sourceAsset": "assets/6c2d5d6d052c4bdf9c32e0d1b394b2e8",
+      "type": "DESIGN_SYSTEM_INSTANCE",
+      "width": 960
+    },
+    {
+      "height": 540,
+      "id": "assets_cb647dd7a90148a9ad55e4e903142279",
+      "sourceAsset": "assets/cb647dd7a90148a9ad55e4e903142279",
+      "type": "DESIGN_SYSTEM_INSTANCE",
+      "width": 960,
+      "x": 192,
+      "y": 2092
+    },
+    {
+      "height": 1870,
+      "id": "b22535e42e7c4edeb3f555e680a85552",
+      "label": "suitokensaver - Sui Unclaimed Scanner",
+      "sourceScreen": "projects/5510102675825052347/screens/b22535e42e7c4edeb3f555e680a85552",
+      "width": 390,
+      "x": 1216,
+      "y": 2092
+    },
+    {
+      "height": 1199,
+      "id": "c0f2b982ebfd4fb8b7fae158fc0c4110",
+      "label": "BeaconDrop - 资产总览与待领空投",
+      "sourceScreen": "projects/5510102675825052347/screens/c0f2b982ebfd4fb8b7fae158fc0c4110",
+      "width": 390,
+      "x": 1024
+    },
+    {
+      "height": 1507,
+      "id": "c3307b70942d43e887e5f74f7c94fe0a",
+      "label": "suitokensaver - Sui Move Claim Spec",
+      "sourceScreen": "projects/5510102675825052347/screens/c3307b70942d43e887e5f74f7c94fe0a",
+      "width": 390,
+      "x": 2124,
+      "y": 2092
+    },
+    {
+      "height": 884,
+      "id": "c4707576db5b478ca9477b072d812ff4",
+      "label": "Airdrop Beacon & Scanner Flow",
+      "sourceScreen": "projects/5510102675825052347/screens/c4707576db5b478ca9477b072d812ff4",
+      "width": 390,
+      "x": 3032,
+      "y": 2092
+    },
+    {
+      "height": 993,
+      "id": "cf3eb9b500994849a5c732ecc2e9d69f",
+      "label": "BeaconDrop - 批量智能领取中心",
+      "sourceScreen": "projects/5510102675825052347/screens/cf3eb9b500994849a5c732ecc2e9d69f",
+      "width": 390,
+      "x": 1932
+    },
+    {
+      "height": 128,
+      "id": "da0ba2ea27a342dc9a6e7ddd7dfd5772",
+      "label": "suitokensaver Favicon & Logo",
+      "sourceScreen": "projects/5510102675825052347/screens/da0ba2ea27a342dc9a6e7ddd7dfd5772",
+      "width": 128,
+      "y": 2092
+    },
+    {
+      "height": 1416,
+      "id": "e19754c4d66b40cc904f63d35a9e87a2",
+      "label": "BeaconDrop - 空投详情与安全验证",
+      "sourceScreen": "projects/5510102675825052347/screens/e19754c4d66b40cc904f63d35a9e87a2",
+      "width": 390,
+      "x": 2386
+    }
+  ],
+  "thumbnailScreenshot": {
+    "downloadUrl": "https://lh3.googleusercontent.com/aida/ALJJyrDwOjGF52aqp4Tzka6R9PCT-iMRun56-4kp58Bc_lq1_nObOG53CGmTZdtXy3bggSxClZnOEeSJ7pOkpeGIcMQPVa_qchF--Sf3KZwyYfz3vo3LbxsBEXx0QGuLQbf8HWkw-BpZNoXr8sy2jiOhK1ChPYT2fM6J0n3ibYXX_LfCr3O1M4s4-Uhe8QZqN67wFpUVZwD5TRWoEBZ541lj6gVGLlaLbPUgFX1RYEDaNRu_nOlh4eHKow-iwNE",
+    "name": "projects/5510102675825052347/screens/cf3eb9b500994849a5c732ecc2e9d69f/fileEntries/screenshot"
+  },
+  "title": "Web3 Airdrop Portal",
+  "updateTime": "2026-11-09T07:38:52.046733Z",
+  "visibility": "PRIVATE"
+}

@@ -1,0 +1,17 @@
+{
+  "deviceType": "MOBILE",
+  "height": "3014",
+  "htmlCode": {
+    "downloadUrl": "https://stitch.googleapis.com/v1/projects/5510102675825052347/files/c3307b70942d43e887e5f74f7c94fe0a:download",
+    "mimeType": "text/html",
+    "name": "projects/5510102675825052347/screens/c3307b70942d43e887e5f74f7c94fe0a/fileEntries/html"
+  },
+  "name": "projects/5510102675825052347/screens/c3307b70942d43e887e5f74f7c94fe0a",
+  "screenshot": {
+    "downloadUrl": "https://stitch.googleapis.com/v1/projects/5510102675825052347/files/screenshot_00065fd3033d06700925d4daba19f254:download",
+    "mimeType": "image/png",
+    "name": "projects/5510102675825052347/screens/c3307b70942d43e887e5f74f7c94fe0a/fileEntries/screenshot"
+  },
+  "title": "suitokensaver - Sui Move Claim Spec",
+  "width": "806"
+}

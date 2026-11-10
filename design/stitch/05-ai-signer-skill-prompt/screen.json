@@ -1,0 +1,17 @@
+{
+  "deviceType": "MOBILE",
+  "height": "4072",
+  "htmlCode": {
+    "downloadUrl": "https://stitch.googleapis.com/v1/projects/5510102675825052347/files/76d6f9aa067b45c4a20214043c2b5a7a:download",
+    "mimeType": "text/html",
+    "name": "projects/5510102675825052347/screens/76d6f9aa067b45c4a20214043c2b5a7a/fileEntries/html"
+  },
+  "name": "projects/5510102675825052347/screens/76d6f9aa067b45c4a20214043c2b5a7a",
+  "screenshot": {
+    "downloadUrl": "https://stitch.googleapis.com/v1/projects/5510102675825052347/files/screenshot_00065fd303b32cd802dea6354004fe85:download",
+    "mimeType": "image/png",
+    "name": "projects/5510102675825052347/screens/76d6f9aa067b45c4a20214043c2b5a7a/fileEntries/screenshot"
+  },
+  "title": "suitokensaver - AI Signer & Skill Prompt",
+  "width": "780"
+}

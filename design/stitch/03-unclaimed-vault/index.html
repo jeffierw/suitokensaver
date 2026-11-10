@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>suitokensaver - Sui Airdrop Scanner</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#111317;color:#e2e2e6;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom,0px));}.pt-safe{padding-top:calc(env(safe-area-inset-top,0px));}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "error-container": "#93000a", "outline-variant": "#3b4a45", "surface-dim": "#111317", "error": "#ffb4ab", "tertiary": "#a2ffd0", "on-tertiary-container": "#006645", "primary-fixed-dim": "#26dfbd", "on-primary-container": "#006454", "on-secondary-container": "#e6ecff", "on-secondary-fixed": "#001a42", "on-secondary": "#002e6a", "inverse-primary": "#006b59", "primary": "#95ffe4", "secondary-fixed-dim": "#adc6ff", "outline": "#84948e", "tertiary-fixed": "#6ffbbe", "secondary-container": "#0566d9", "surface-container": "#1e2023", "on-primary-fixed": "#00201a", "tertiary-fixed-dim": "#4edea3", "primary-container": "#38e8c6", "secondary-fixed": "#d8e2ff", "surface": "#111317", "on-tertiary-fixed": "#002113", "inverse-on-surface": "#2f3034", "on-surface": "#e2e2e6", "on-error": "#690005", "surface-container-highest": "#333538", "on-surface-variant": "#bacac4", "on-tertiary-fixed-variant": "#005236", "surface-variant": "#333538", "surface-tint": "#26dfbd", "on-primary": "#00382e", "on-primary-fixed-variant": "#005143", "surface-bright": "#37393d", "surface-container-high": "#282a2d", "primary-fixed": "#54fcd9", "tertiary-container": "#59e8ac", "surface-container-lowest": "#0c0e11", "on-error-container": "#ffdad6", "surface-container-low": "#1a1c1f", "secondary": "#adc6ff", "on-tertiary": "#003824", "on-background": "#e2e2e6", "background": "#111317", "inverse-surface": "#e2e2e6", "on-secondary-fixed-variant": "#004395" }, borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" }, spacing: { gutter: "1.5rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-lg": "1.5rem", margin: "2rem", "space-md": "1rem" }, fontFamily: { "body-lg": ["Geist"], "body-sm": ["Geist"], "mono-lg": ["JetBrains Mono"], "body-md": ["Geist"], "label-caps": ["JetBrains Mono"], "headline-lg": ["Space Grotesk"], "headline-lg-mobile": ["Space Grotesk"], "headline-xl-mobile": ["Space Grotesk"], "headline-xl": ["Space Grotesk"], "mono-md": ["JetBrains Mono"], "headline-md": ["Space Grotesk"], "mono-sm": ["JetBrains Mono"] }, fontSize: { "body-lg": ["18px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "400" }], "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }], "mono-lg": ["16px", { lineHeight: "24px", letterSpacing: "-0.02em", fontWeight: "500" }], "body-md": ["15px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "400" }], "label-caps": ["10px", { lineHeight: "14px", letterSpacing: "0.08em", fontWeight: "600" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "600" }], "headline-lg-mobile": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-xl-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "600" }], "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.03em", fontWeight: "600" }], "mono-md": ["13px", { lineHeight: "18px", letterSpacing: "0em", fontWeight: "400" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "500" }], "mono-sm": ["11px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl"><div class="h-16 px-space-md flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="suitokensaver Favicon &amp; Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ALJJyrDyTeeC2rSdtW1_ErBt5zxNhdhDQGbnOLUWJh82TUDz2msvBC0QrpCGft0UIEFigjpr_lTeXX1Q-7O8smxB8Qg9yfjR5_socXWvR-PgaZ8df7VNYBB9qHSL4Ld3otSbfsZ7Hfj82hHLGKQfd571qWcNibT6TwfSQl1i-r67d99LFFu_0BV0YUF_Eea7zaHOgYoUJ3GZlij6INAEYZkulyGqDURzRG9R56lGdYnH2NcK"/><div class="flex flex-col min-w-0"><span class="font-headline-md text-headline-md tracking-tight text-on-surface leading-tight truncate">suitokensaver</span><div class="flex items-center gap-space-xs"><span class="font-label-caps text-label-caps text-on-surface-variant truncate uppercase">Vault</span><span class="text-outline-variant font-mono-sm text-mono-sm">•</span><span class="inline-flex items-center gap-1 bg-surface-container-high px-1.5 py-0.5 rounded-lg text-primary font-mono-sm text-mono-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>Sui Mainnet</span></div></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><div class="relative flex items-center"><select aria-label="Language Selector" class="appearance-none bg-surface-container-low text-on-surface font-mono-sm text-mono-sm pl-2 pr-6 py-1 rounded-lg focus:outline-none focus:text-primary cursor-pointer"><option selected="" value="en">EN</option><option value="zh">ZH</option><option value="ja">JA</option></select><span class="material-symbols-outlined absolute right-1 pointer-events-none text-on-surface-variant text-[14px]">expand_more</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-space-md space-y-space-md pb-8">
+<!-- Top Address Identity & Global Metric Card -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-md shadow-xl">
+<div class="absolute -right-8 -top-8 w-44 h-44 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-10 -bottom-10 w-36 h-36 rounded-full bg-secondary-container/20 blur-2xl pointer-events-none"></div>
+<!-- Address & Verification Badges -->
+<div class="flex items-center justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-mono-sm text-mono-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+          Non-Custodial Audit
+        </span>
+</div>
+<div class="flex items-center gap-1">
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">Epoch 482</span>
+<span class="material-symbols-outlined text-[14px] text-tertiary">check_circle</span>
+</div>
+</div>
+<!-- Address Name and Copy/Explorer Action -->
+<div class="flex items-center justify-between bg-surface-container-lowest/80 rounded-lg p-space-xs pl-2.5 mb-space-md">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="material-symbols-outlined text-primary text-[18px]">fingerprint</span>
+<span class="font-mono-md text-mono-md text-on-surface font-medium truncate" id="target-address">mysten_early.sui</span>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant truncate hidden sm:inline">(0x7d3e...9a41)</span>
+</div>
+<div class="flex items-center gap-1 flex-shrink-0">
+<button class="p-1.5 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" id="copy-btn" onclick="copyAddress()" title="Copy Sui Address">
+<span class="material-symbols-outlined text-[16px]" id="copy-icon">content_copy</span>
+</button>
+<a class="p-1.5 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" href="https://suiscan.xyz" rel="noopener noreferrer" target="_blank" title="View in Explorer">
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Total Financial Metric Hero -->
+<div class="flex flex-col space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Total Discovered Unclaimed</span>
+<span class="inline-flex items-center gap-1 text-tertiary font-mono-sm text-mono-sm">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+          Ready to Sign
+        </span>
+</div>
+<div class="flex items-baseline gap-space-sm flex-wrap">
+<span class="font-headline-xl-mobile text-headline-xl-mobile text-primary tracking-tight font-semibold">$6,250.00</span>
+<span class="font-mono-lg text-mono-lg text-on-surface">USD</span>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<p class="font-mono-sm text-mono-sm text-on-surface-variant">
+          ≈ 1,840 SUI <span class="text-outline">+ 3 Move Object Allocations</span>
+</p>
+</div>
+</div>
+<!-- Mini Progress Summary -->
+<div class="mt-space-md pt-space-sm bg-surface-container-lowest/50 rounded-lg p-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">Zero Phishing Flagged</span>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant">4/4 Validated Bytecode Signatures</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-tertiary-container bg-surface-container-high font-mono-sm text-mono-sm font-semibold">100% SECURE</span>
+</div>
+</div>
+<!-- Filter Chips Horizontal Scroll -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 no-scrollbar -mx-space-md px-space-md">
+<button class="filter-chip active flex-shrink-0 px-3 py-1.5 rounded-full bg-primary text-on-primary font-mono-sm text-mono-sm font-semibold shadow-sm transition-transform active:scale-95 flex items-center gap-1.5" id="filter-all" onclick="filterVault('all')">
+<span>All Unclaimed</span>
+<span class="bg-on-primary/20 px-1.5 py-0.2 rounded-full text-[10px]">4</span>
+</button>
+<button class="filter-chip flex-shrink-0 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-mono-sm text-mono-sm transition-transform active:scale-95 flex items-center gap-1" id="filter-tokens" onclick="filterVault('tokens')">
+<span>Liquid Move Tokens</span>
+</button>
+<button class="filter-chip flex-shrink-0 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-mono-sm text-mono-sm transition-transform active:scale-95 flex items-center gap-1" id="filter-kiosk" onclick="filterVault('kiosk')">
+<span>Kiosk / NFT Badges</span>
+</button>
+<button class="filter-chip flex-shrink-0 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-mono-sm text-mono-sm transition-transform active:scale-95 flex items-center gap-1" id="filter-vesting" onclick="filterVault('vesting')">
+<span>Vesting Streams</span>
+</button>
+<button class="filter-chip flex-shrink-0 px-3 py-1.5 rounded-full bg-surface-container-high text-error hover:text-error/80 font-mono-sm text-mono-sm transition-transform active:scale-95 flex items-center gap-1" id="filter-expiring" onclick="filterVault('expiring')">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+<span>Expiring Soon</span>
+</button>
+</div>
+<!-- Cards List -->
+<div class="space-y-space-md" id="cards-container">
+<!-- Protocol Card 1: DeepBook Protocol ($DEEP) -->
+<div class="card-item group relative rounded-xl bg-surface-container p-space-md transition-all duration-200 hover:bg-surface-container-high" data-category="expiring tokens">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-2.5">
+<div class="relative w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center p-1.5 shadow-inner">
+<img class="w-full h-full object-contain rounded-lg" data-alt="Official DeepBook central limit order book protocol crest icon on dark ocean Sui background with teal mathematical grid lines and glowing node accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR3wIBZIAK7s_m1H4Q16zJt7oyBUWrmZ-ob5ND7-XHS2zIPoiv0Vkv6Gl1FShU7PGoTcHhGoAvMxX4we2XGbacKMCbwFEPfYic7vordj7I6EM_uWRSzyazpKx0RluUQpSYHf01hIOnZS-Kn-49za7kQVl84laMuJ7NJzJwXiIU7UwvODu1Xss1Xz3AQkBQl4z-30yG7EHYfcuaH8-aFvaLvL1Ui3mTyebQeVqPc_s"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-primary flex items-center justify-center text-[9px] text-on-primary font-bold">✓</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-md text-headline-md-mobile text-on-surface font-semibold tracking-tight">DeepBook</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-lowest text-primary font-mono-sm text-mono-sm font-semibold">$DEEP</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant truncate">Move Object / Merkle Proof Claim</span>
+</div>
+</div>
+<!-- Urgency Badge -->
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container/40 text-error font-mono-sm text-mono-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[13px]">alarm</span>
+<span>19d left</span>
+</div>
+</div>
+<!-- Financial Metrics Sub-Panel -->
+<div class="bg-surface-container-lowest rounded-lg p-space-sm my-space-sm grid grid-cols-2 gap-2">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ALLOCATION</span>
+<span class="font-mono-lg text-mono-lg text-primary font-semibold">12,500 <span class="text-on-surface text-mono-sm font-normal">DEEP</span></span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ESTIMATED VALUE</span>
+<span class="font-mono-lg text-mono-lg text-on-surface font-semibold">≈ $2,375.00 <span class="text-on-surface-variant text-mono-sm font-normal">USD</span></span>
+</div>
+</div>
+<!-- Security Package Audit Tag -->
+<div class="flex items-center justify-between text-on-surface-variant bg-surface-container-high/40 rounded px-2.5 py-1.5 mb-space-md">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="material-symbols-outlined text-tertiary text-[15px]">verified</span>
+<span class="font-mono-sm text-mono-sm truncate">Verified MystenLabs Package</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-outline font-medium flex-shrink-0">0xde09...28c1</span>
+</div>
+<!-- Action Button -->
+<button class="w-full py-2.5 px-4 rounded-lg bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary transition-all duration-200 font-mono-md text-mono-md font-semibold flex items-center justify-center gap-2 group-hover:shadow-md" onclick="triggerAiModal('DeepBook Protocol ($DEEP)', '12,500 DEEP', '0xde0914...28c1')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>Generate AI Claim Prompt</span>
+</button>
+</div>
+<!-- Protocol Card 2: Cetus DEX Protocol ($CETUS) -->
+<div class="card-item group relative rounded-xl bg-surface-container p-space-md transition-all duration-200 hover:bg-surface-container-high" data-category="tokens">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-2.5">
+<div class="relative w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center p-1.5 shadow-inner">
+<img class="w-full h-full object-contain rounded-lg" data-alt="Cetus Protocol oceanic neon whale mark icon on dark cryptographic black canvas with aqua waves and Sui ecosystem aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzrIHgp45BTxf8ZQ4tZu0ZlL4SG3CF6SDdcCMsujFEgOoHUkDEvnj7U1hK5kfWVRTxMR5EiW6uskauYsw7lzL9AIEiG65GuB491hktwoFa-xMoEvo_xQZjrDxqeTyDTUBWEzR1TRQH-0Z-ZmglOjSjTeFViuB3aaFg7WMLnxNcGAYJSz-nEniKh3SM6mCxfnnJZt8ieqLy2D3348Y33cXdhcPDYPCs5SO2Hkkv0Yg"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-primary flex items-center justify-center text-[9px] text-on-primary font-bold">✓</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-md text-headline-md-mobile text-on-surface font-semibold tracking-tight">Cetus DEX</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-lowest text-primary font-mono-sm text-mono-sm font-semibold">$CETUS</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant truncate">Concentrated Liquidity Retro Drop</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-tertiary font-mono-sm text-mono-sm">
+          No Expiry
+        </span>
+</div>
+<!-- Financial Metrics Sub-Panel -->
+<div class="bg-surface-container-lowest rounded-lg p-space-sm my-space-sm grid grid-cols-2 gap-2">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ALLOCATION</span>
+<span class="font-mono-lg text-mono-lg text-primary font-semibold">3,200 <span class="text-on-surface text-mono-sm font-normal">CETUS</span></span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ESTIMATED VALUE</span>
+<span class="font-mono-lg text-mono-lg text-on-surface font-semibold">≈ $1,180.00 <span class="text-on-surface-variant text-mono-sm font-normal">USD</span></span>
+</div>
+</div>
+<!-- Security Check Tag -->
+<div class="flex items-center justify-between text-on-surface-variant bg-surface-container-high/40 rounded px-2.5 py-1.5 mb-space-md">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="material-symbols-outlined text-tertiary text-[15px]">security</span>
+<span class="font-mono-sm text-mono-sm truncate">Double Audited</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-outline font-medium flex-shrink-0">MoveBit &amp; OtterSec</span>
+</div>
+<!-- Action Button -->
+<button class="w-full py-2.5 px-4 rounded-lg bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary transition-all duration-200 font-mono-md text-mono-md font-semibold flex items-center justify-center gap-2 group-hover:shadow-md" onclick="triggerAiModal('Cetus DEX Protocol ($CETUS)', '3,200 CETUS', '0x1eabed...9b34')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>Generate AI Claim Prompt</span>
+</button>
+</div>
+<!-- Protocol Card 3: Scallop Protocol ($SCA) -->
+<div class="card-item group relative rounded-xl bg-surface-container p-space-md transition-all duration-200 hover:bg-surface-container-high" data-category="vesting tokens">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-2.5">
+<div class="relative w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center p-1.5 shadow-inner">
+<img class="w-full h-full object-contain rounded-lg" data-alt="Scallop Protocol Sui money market shellfish icon with glowing neon turquoise shell lines and dark obsidian contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHysMbsbgaUbaNRhRk71yMDXJbsSEgOZThS_yLReYEEk_xa6udXmSqoV0AfhoCtya-PtFltiIiHYJXXbH5cj_guD6kHBvUAunw-7SAduZKlgz16aF0PZR4I0rCForKgsqNrxUKoEew2sSMDFbt6U5uNI86l9YMFJWlyG_r6g3OmjObtlhH5T8nt-C-SwDer0VZFBAsgbYX14Igpiq6ER80sfYZrtXCQF1epJhxGu8"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-primary flex items-center justify-center text-[9px] text-on-primary font-bold">✓</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-md text-headline-md-mobile text-on-surface font-semibold tracking-tight">Scallop Protocol</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-lowest text-primary font-mono-sm text-mono-sm font-semibold">$SCA</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant truncate">Lending Epoch Reward</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-mono-sm text-mono-sm">
+          Claimable
+        </span>
+</div>
+<!-- Financial Metrics Sub-Panel -->
+<div class="bg-surface-container-lowest rounded-lg p-space-sm my-space-sm grid grid-cols-2 gap-2">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ALLOCATION</span>
+<span class="font-mono-lg text-mono-lg text-primary font-semibold">450 <span class="text-on-surface text-mono-sm font-normal">SCA</span></span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ESTIMATED VALUE</span>
+<span class="font-mono-lg text-mono-lg text-on-surface font-semibold">≈ $495.00 <span class="text-on-surface-variant text-mono-sm font-normal">USD</span></span>
+</div>
+</div>
+<!-- Security Check Tag -->
+<div class="flex items-center justify-between text-on-surface-variant bg-surface-container-high/40 rounded px-2.5 py-1.5 mb-space-md">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="material-symbols-outlined text-tertiary text-[15px]">code</span>
+<span class="font-mono-sm text-mono-sm truncate">Formal Verification Move</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-outline font-medium flex-shrink-0">Zellic Audited</span>
+</div>
+<!-- Action Button -->
+<button class="w-full py-2.5 px-4 rounded-lg bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary transition-all duration-200 font-mono-md text-mono-md font-semibold flex items-center justify-center gap-2 group-hover:shadow-md" onclick="triggerAiModal('Scallop Protocol ($SCA)', '450 SCA', '0x6eabf1...cc82')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>Generate AI Claim Prompt</span>
+</button>
+</div>
+<!-- Protocol Card 4: Sui Foundation Community Reserve ($SUI) -->
+<div class="card-item group relative rounded-xl bg-surface-container p-space-md transition-all duration-200 hover:bg-surface-container-high" data-category="kiosk tokens">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-2.5">
+<div class="relative w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center p-1.5 shadow-inner">
+<img class="w-full h-full object-contain rounded-lg" data-alt="Official Sui water droplet logo token rendered in iridescent cyan and luminous electric mint 3D glass texture on midnight black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7b2uekIT9CU7CE4Cr4hwCczg_n-pF5jc8zRFe7FcAPf_Tc24VvNrGpmpSKcMjw0FQfKYzd71qY-VSeXquQCuHx_kfD1oTslOhK0oB643gjyl8_rucDtge_XmonVDPQgz8VKgJSQ_XFTyeqBWehYQXNQzDVeTOz1Ly9BWDELnY6OEQDjOMg7ShoGxNyh8V5cWyVUpL3Jsaz88OB1kwX80CrMNKF8p1yPOhXCd2EK8"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-primary flex items-center justify-center text-[9px] text-on-primary font-bold">✓</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-md text-headline-md-mobile text-on-surface font-semibold tracking-tight">Sui Foundation</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-lowest text-primary font-mono-sm text-mono-sm font-semibold">$SUI</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-on-surface-variant truncate">Native Move Coin Object</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-mono-sm text-mono-sm">
+          Genesis Drop
+        </span>
+</div>
+<!-- Financial Metrics Sub-Panel -->
+<div class="bg-surface-container-lowest rounded-lg p-space-sm my-space-sm grid grid-cols-2 gap-2">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ALLOCATION</span>
+<span class="font-mono-lg text-mono-lg text-primary font-semibold">850 <span class="text-on-surface text-mono-sm font-normal">SUI</span></span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ESTIMATED VALUE</span>
+<span class="font-mono-lg text-mono-lg text-on-surface font-semibold">≈ $2,200.00 <span class="text-on-surface-variant text-mono-sm font-normal">USD</span></span>
+</div>
+</div>
+<!-- Security Check Tag -->
+<div class="flex items-center justify-between text-on-surface-variant bg-surface-container-high/40 rounded px-2.5 py-1.5 mb-space-md">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="material-symbols-outlined text-tertiary text-[15px]">verified_user</span>
+<span class="font-mono-sm text-mono-sm truncate">Foundation Root Signer</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-outline font-medium flex-shrink-0">System Object 0x5</span>
+</div>
+<!-- Action Button -->
+<button class="w-full py-2.5 px-4 rounded-lg bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary transition-all duration-200 font-mono-md text-mono-md font-semibold flex items-center justify-center gap-2 group-hover:shadow-md" onclick="triggerAiModal('Sui Foundation Community Reserve ($SUI)', '850 SUI', '0x000000...0005')">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>Generate AI Claim Prompt</span>
+</button>
+</div>
+</div>
+<!-- Empty State Placeholder (Hidden by default, used when filtering has 0 results) -->
+<div class="hidden flex-col items-center justify-center py-12 px-4 text-center rounded-xl bg-surface-container" id="vault-empty-state">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-primary mb-3">
+<span class="material-symbols-outlined text-[28px]">search_off</span>
+</div>
+<span class="font-headline-md text-headline-md-mobile text-on-surface font-semibold mb-1">No Assets in View</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs">All detected unclaimed Move coins &amp; objects for this filter criteria have already been cataloged or delegated.</p>
+<button class="mt-4 px-4 py-2 rounded-lg bg-primary text-on-primary font-mono-sm text-mono-sm font-semibold" onclick="filterVault('all')">Reset Filter</button>
+</div>
+<!-- Bottom Floating Sticky Action Bar -->
+<div class="sticky bottom-20 z-40 w-full pt-2">
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-primary via-primary-fixed to-tertiary p-[1px] shadow-2xl">
+<div class="relative rounded-xl bg-surface-container-lowest/95 backdrop-blur-md p-space-sm flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">auto_awesome</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-[14px] text-on-surface leading-tight font-semibold truncate">Batch Claim Planner</span>
+<span class="font-mono-sm text-mono-sm text-primary">All 4 Sui Protocols (4 Objects)</span>
+</div>
+</div>
+<button class="relative overflow-hidden flex-shrink-0 px-4 py-2.5 rounded-lg bg-primary text-on-primary font-mono-md text-mono-md font-semibold tracking-tight hover:brightness-105 active:scale-95 transition-all shadow-md flex items-center gap-1.5" onclick="batchGeneratePrompts()">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>1-Click Batch</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Emil Kowalski Inspired Interactive Dialog / Terminal Prompt Drawer -->
+<div class="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-surface-dim/80 backdrop-blur-md transition-opacity duration-200 opacity-0 pointer-events-none p-0 sm:p-4" id="ai-modal">
+<div class="w-full max-w-lg bg-surface-container rounded-t-2xl sm:rounded-2xl p-space-md shadow-2xl transform translate-y-8 transition-transform duration-200 max-h-[751px] flex flex-col" id="ai-modal-card">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">smart_toy</span>
+<span class="font-headline-md text-[16px] text-on-surface font-semibold">AI Signer Prompt Synthesizer</span>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high text-on-surface-variant flex items-center justify-center hover:text-on-surface" onclick="closeAiModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="space-y-space-sm overflow-y-auto pr-1 my-space-xs">
+<div class="p-space-xs rounded bg-surface-container-lowest font-mono-sm text-mono-sm text-on-surface-variant">
+<span class="text-tertiary">Target Protocol:</span> <span class="text-on-surface font-medium" id="modal-protocol-name"></span>
+<br/>
+<span class="text-tertiary">Allocation Payload:</span> <span class="text-primary font-medium" id="modal-allocation"></span>
+<br/>
+<span class="text-tertiary">Package / Object ID:</span> <span class="text-outline font-medium" id="modal-package-id"></span>
+</div>
+<div class="relative">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-caps text-label-caps">OPTIMIZED SUI CLI &amp; MOVE CALL INSTRUCTION</span>
+<span class="font-mono-sm text-mono-sm text-primary">Zero-Signature Leak</span>
+</div>
+<div class="bg-surface-container-lowest text-on-surface p-3 rounded-lg font-mono-sm text-mono-sm leading-relaxed whitespace-pre-wrap select-all overflow-x-auto max-h-48 border border-white/5" id="modal-prompt-content">
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-primary/5 text-primary text-mono-sm font-mono-sm">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Copy and paste this secure prompt into the AI Signer tab or Sui Client CLI for dry-run verification.</span>
+</div>
+</div>
+<div class="pt-space-sm flex gap-space-sm">
+<button class="flex-1 py-2.5 rounded-lg bg-primary text-on-primary font-mono-md text-mono-md font-semibold flex items-center justify-center gap-1.5 transition-transform active:scale-98" id="modal-copy-btn" onclick="copyPromptToClipboard()">
+<span class="material-symbols-outlined text-[18px]">copy_all</span>
+<span id="modal-copy-label">Copy Prompt</span>
+</button>
+<button class="px-4 py-2.5 rounded-lg bg-surface-container-high text-on-surface font-mono-md text-mono-md" onclick="closeAiModal()">
+          Dismiss
+        </button>
+</div>
+</div>
+</div>
+<!-- Toast Notification Pill -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-primary text-on-primary font-mono-sm text-mono-sm font-semibold shadow-2xl transition-all duration-300 opacity-0 pointer-events-none translate-y-[-10px] flex items-center gap-1.5" id="toast">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span id="toast-message">Copied to clipboard</span>
+</div>
+</div>
+<script>
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-message');
+    toastMsg.textContent = message;
+    toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+      toast.classList.remove('opacity-100', 'translate-y-0');
+    }, 2200);
+  }
+
+  function copyAddress() {
+    const address = document.getElementById('target-address').innerText;
+    navigator.clipboard.writeText(address).then(() => {
+      const copyIcon = document.getElementById('copy-icon');
+      copyIcon.textContent = 'check';
+      showToast('Address copied: mysten_early.sui');
+      setTimeout(() => {
+        copyIcon.textContent = 'content_copy';
+      }, 1800);
+    });
+  }
+
+  function filterVault(filterKey) {
+    const chips = document.querySelectorAll('.filter-chip');
+    chips.forEach(chip => {
+      chip.classList.remove('bg-primary', 'text-on-primary', 'font-semibold');
+      chip.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+    });
+
+    const activeBtn = document.getElementById('filter-' + filterKey);
+    if (activeBtn) {
+      activeBtn.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+      activeBtn.classList.add('bg-primary', 'text-on-primary', 'font-semibold');
+    }
+
+    const cards = document.querySelectorAll('.card-item');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const categories = card.getAttribute('data-category');
+      if (filterKey === 'all') {
+        card.style.display = 'block';
+        visibleCount++;
+      } else if (filterKey === 'expiring' && categories.includes('expiring')) {
+        card.style.display = 'block';
+        visibleCount++;
+      } else if (filterKey === 'tokens' && categories.includes('tokens')) {
+        card.style.display = 'block';
+        visibleCount++;
+      } else if (filterKey === 'kiosk' && categories.includes('kiosk')) {
+        card.style.display = 'block';
+        visibleCount++;
+      } else if (filterKey === 'vesting' && categories.includes('vesting')) {
+        card.style.display = 'block';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    const emptyState = document.getElementById('vault-empty-state');
+    if (visibleCount === 0) {
+      emptyState.classList.remove('hidden');
+      emptyState.classList.add('flex');
+    } else {
+      emptyState.classList.remove('flex');
+      emptyState.classList.add('hidden');
+    }
+  }
+
+  let currentPromptText = '';
+
+  function triggerAiModal(protocol, allocation, packageId) {
+    const modal = document.getElementById('ai-modal');
+    const modalCard = document.getElementById('ai-modal-card');
+    
+    document.getElementById('modal-protocol-name').textContent = protocol;
+    document.getElementById('modal-allocation').textContent = allocation;
+    document.getElementById('modal-package-id').textContent = packageId;
+    
+    currentPromptText = `// AI Signer Autonomous Claim Spec for: ${protocol}
+Recipient: mysten_early.sui (0x7d3e...9a41)
+Target Allocation: ${allocation}
+Network: Sui Mainnet (Protocol v52)
+Package ID: ${packageId}
+
+Execution Payload:
+sui client call \\
+  --package ${packageId} \\
+  --module airdrop_claim \\
+  --function claim_merkle_reward \\
+  --args 0x482...merkleProof mysten_early.sui \\
+  --gas-budget 50000000
+
+Task: Inspect simulation object dry_run mutations, confirm zero coin transfer out of owner context, construct PTB transaction block for signature review.`;
+
+    document.getElementById('modal-prompt-content').textContent = currentPromptText;
+
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modalCard.classList.remove('translate-y-8');
+    modalCard.classList.add('translate-y-0');
+  }
+
+  function batchGeneratePrompts() {
+    triggerAiModal('Batch Execution (4 Sui Protocols)', '12,500 DEEP + 3,200 CETUS + 450 SCA + 850 SUI', 'Composite Programmable Transaction Block (PTB)');
+  }
+
+  function closeAiModal() {
+    const modal = document.getElementById('ai-modal');
+    const modalCard = document.getElementById('ai-modal-card');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    modalCard.classList.add('translate-y-8');
+    modalCard.classList.remove('translate-y-0');
+  }
+
+  function copyPromptToClipboard() {
+    if (!currentPromptText) return;
+    navigator.clipboard.writeText(currentPromptText).then(() => {
+      const label = document.getElementById('modal-copy-label');
+      label.textContent = 'Prompt Copied!';
+      showToast('AI Claim Prompt ready to execute');
+      setTimeout(() => {
+        label.textContent = 'Copy Prompt';
+        closeAiModal();
+      }, 1200);
+    });
+  }
+
+  // Close modal when tapping outside card
+  document.getElementById('ai-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeAiModal();
+    }
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-space-sm"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant transition-colors duration-150 hover:text-on-surface" data-path="scanner" href="#"><span class="material-symbols-outlined text-[22px]">radar</span><span class="font-mono-sm text-mono-sm">Scanner</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 transition-colors duration-150 text-primary font-semibold" data-path="vault" href="#"><span class="material-symbols-outlined text-[22px]">token</span><span class="font-mono-sm text-mono-sm">Vault</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant transition-colors duration-150 hover:text-on-surface" data-path="ai-signer" href="#"><span class="material-symbols-outlined text-[22px]">terminal</span><span class="font-mono-sm text-mono-sm">AI Signer</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant transition-colors duration-150 hover:text-on-surface" data-path="guide" href="#"><span class="material-symbols-outlined text-[22px]">menu_book</span><span class="font-mono-sm text-mono-sm">Guide</span></a></div></nav></body></html>
