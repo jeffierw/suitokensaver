@@ -7,10 +7,11 @@ import { scanBatch } from './batch.mjs';
 import logo from '../design/stitch/01-favicon-logo/logo.svg';
 import './style.css';
 import SnapshotExplorer from './SnapshotExplorer.jsx';
+import { LocaleProvider, useI18n } from './i18n.jsx';
+import { LOCALES } from './locales.mjs';
 
 const STATUS = { claimable: 'Unclaimed', claimed: 'Claimed', locked: 'Locked', empty: 'Empty', unverifiable: 'Unverified' };
 const short = (value) => value?.length > 24 ? `${value.slice(0, 10)}...${value.slice(-8)}` : value;
-const date = (value) => new Date(value).toLocaleString();
 const explorer = (kind, value) => `https://suiscan.xyz/mainnet/${kind}/${encodeURIComponent(value)}`;
 
 async function post(route, body, signal) {
@@ -42,6 +43,7 @@ function EvidenceLink({ label, value, kind = 'object' }) {
 }
 
 function ResultRow({ result, item, campaign, group }) {
+  const { time } = useI18n();
   return <div className="result-row">
     <div className="result-main">
       <div className="account"><strong title={result.inputs.join(', ')}>{result.inputs.map(short).join(', ')}</strong>
@@ -58,11 +60,11 @@ function ResultRow({ result, item, campaign, group }) {
         <EvidenceLink label="Funding object" value={item.lockedId} />
         <EvidenceLink label="Configuration" value={item.configId} />
         <EvidenceLink label="Creation transaction" value={item.creation?.digest} kind="tx" />
-        {item.creation && <p>Created: {date(item.creation.timestamp)}. WAL round is classified by creation date.</p>}
-        {item.unlockAt != null && <p>Unlocked: {date(item.unlockAt)}</p>}
-        {item.recoveryAt != null && <p className={item.recoveryAvailable ? 'warning' : ''}>Administrator recovery available: {date(item.recoveryAt)}. This is not an automatic expiry.</p>}
-        <p>Checkpoint {result.checkpoint} at {date(result.checkpointTime)}</p>
-        <p>Read at {date(result.checkedAt)} via {result.source}. Reads are not an atomic snapshot.</p>
+        {item.creation && <p>Created: {time(item.creation.timestamp)}. WAL round is classified by creation date.</p>}
+        {item.unlockAt != null && <p>Unlocked: {time(item.unlockAt)}</p>}
+        {item.recoveryAt != null && <p className={item.recoveryAvailable ? 'warning' : ''}>Administrator recovery available: {time(item.recoveryAt)}. This is not an automatic expiry.</p>}
+        <p>Checkpoint {result.checkpoint} at {time(result.checkpointTime)}</p>
+        <p>Read at {time(result.checkedAt)} via {result.source}. Reads are not an atomic snapshot.</p>
         <p className="type">{item.type}</p>
       </div>
     </details> : <p className="empty-note">{group.complete ? 'No matching NFT or receipt currently held. This does not establish past eligibility or claim history.' : 'This distribution could not be fully checked. Retry before drawing a conclusion.'}</p>}
@@ -70,6 +72,7 @@ function ResultRow({ result, item, campaign, group }) {
 }
 
 function App() {
+  const { locale, setLocale, t } = useI18n();
   const [text, setText] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [batch, setBatch] = useState(null);
@@ -116,8 +119,9 @@ function App() {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   return <>
-    <header className="header"><a className="brand" href="/"><img src={logo} alt="" width="36" height="36" /><span>suitokensaver</span></a><span className="network"><span />Sui Mainnet</span></header>
+    <header className="header"><a className="brand" href="/"><img src={logo} alt="" width="36" height="36" /><span>suitokensaver</span></a><div className="header-tools"><label className="language-select"><span>{t('Language')}</span><select value={locale} onChange={(event) => setLocale(event.target.value)} aria-label={t('Language')}>{LOCALES.map(([code, label]) => <option value={code} key={code}>{label}</option>)}</select></label><span className="network"><span />{t('Sui Mainnet')}</span></div></header>
     <main>
+      <SnapshotExplorer variant="overview" />
       <section className="query-section">
         <div className="eyebrow"><ShieldCheck size={14} /> READ-ONLY SCANNER</div>
         <h1>Unclaimed on Sui</h1>
@@ -160,6 +164,7 @@ function App() {
             {filter !== 'all' && !batch.results.some((result) => result.groups.some((group) => group.campaignId === campaign.id && group.items.some((item) => item.status === filter))) && <p className="no-match">No matching results in this filter.</p>}
           </section>)}
           <p className="disclaimer">Unclaimed means the required on-chain objects were found at query time, not a guarantee of successful redemption. Claimed amounts are historical receipt amounts, not current wallet balances.</p>
+          <div className="sponsorship"><span>{t('Found this useful? Support its upkeep:')}</span><button className="support-address" type="button" onClick={() => navigator.clipboard.writeText('0xpest.sui')} title={t('Copy support address')}>0xpest.sui <Copy size={13} /></button></div>
         </>}
       </section>}
       {!batch && !busy && <section className="airdrop-context" aria-labelledby="airdrop-context-title">
@@ -170,10 +175,10 @@ function App() {
           <details><summary>Is an airdrop NFT proof that I can claim?</summary><p>Not by itself. An NFT may be a receipt for an earlier claim, have no matching funds left, or be an imitation. Its exact contract type, withdrawal state and funding object all matter.</p></details>
         </div>
       </section>}
-      <SnapshotExplorer />
+      <SnapshotExplorer variant="details" />
     </main>
     <footer><span>suitokensaver</span><span>Read-only / Mainnet</span></footer>
   </>;
 }
 
-createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);
+createRoot(document.getElementById('root')).render(<React.StrictMode><LocaleProvider><App /></LocaleProvider></React.StrictMode>);
