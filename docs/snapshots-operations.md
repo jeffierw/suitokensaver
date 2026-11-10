@@ -16,7 +16,7 @@ GitHub may delay scheduled jobs. The measured local full scan took 17 minutes;
 publication occurs after collection and upload, not exactly at 10:00.
 Jobs time out after 40 minutes, do not overlap, and upload no Actions artifacts.
 The UI shows checkpoint and completion timestamps; after 26 hours it flags overdue.
-Prices refresh independently every ten minutes and expire after twenty minutes.
+Prices refresh independently every ten minutes from DefiLlama's public API and expire after twenty minutes.
 
 ## Publication
 
