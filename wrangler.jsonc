@@ -14,6 +14,6 @@
     "bindings": [{ "name": "COORDINATOR", "class_name": "SnapshotCoordinator" }]
   },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["SnapshotCoordinator"] }],
-  "d1_databases": [{ "binding": "SNAPSHOTS_DB", "database_name": "suitokensaver-snapshots", "database_id": "00000000-0000-0000-0000-000000000000", "migrations_dir": "cloudflare/migrations" }],
+  "d1_databases": [{ "binding": "SNAPSHOTS_DB", "database_name": "suitokensaver-snapshots", "database_id": "d999d99c-b76d-4490-b83a-e4802b44dbe4", "migrations_dir": "cloudflare/migrations" }],
   "observability": { "enabled": true }
 }
